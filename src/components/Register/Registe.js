@@ -1,6 +1,8 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import "./Register.scss";
 const Register = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -14,8 +16,8 @@ const Register = () => {
   const resgister = (e) => {
     try {
       setFormErrors(validate(data));
-      console.log(formErrors);
-      // alert("dang ky thanh cong");
+      console.log(data);
+      if (formErrors) navigate("/login");
     } catch (err) {
       console.log(err);
     }
@@ -24,38 +26,54 @@ const Register = () => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
     if (!values.name) {
-      errors.name = "Username is required!";
+      errors.name = "Vui lòng nhập họ tên!";
     }
     if (!values.email) {
-      errors.email = "Email is required!";
+      errors.email = "Vui lòng nhâp email!";
     } else if (!regex.test(values.email)) {
-      errors.email = "This is not a valid email format!";
+      errors.email = "Email không hợp lệ!";
     }
     if (!values.phone) {
-      errors.phone = "Phone is required!";
+      errors.phone = "Vui lòng nhập số điện thoại!";
     }
     if (!values.dateOfBirth) {
-      errors.dateOfBirth = "Date of birth is required!";
+      errors.dateOfBirth = "Vui lòng nhập ngày tháng năm sinh!";
     }
     if (!values.idProof) {
-      errors.idProof = "Date of birth is required!";
+      errors.idProof = "Vui lòng nhập số chứng mình nhân dân!";
     }
     if (!values.password) {
-      errors.password = "Password is required";
+      errors.password = "Vui lòng nhập mật khẩu!";
     } else if (values.password.length < 8) {
-      errors.password = "Password must be more than 8 characters";
+      errors.password = "Mật khẩu phải nhiều hơn 8 ký tự!";
     } else if (values.password.length > 10) {
-      errors.password = "Password cannot exceed more than 10 characters";
+      errors.password = "Mật khẩu không được nhiều hơn 10 ký tự!";
     }
     if (!values.confirmPassword || values.password !== values.confirmPassword) {
-      errors.confirmPassword = "Password not them same!";
+      errors.confirmPassword = "Mật khẩu nhập lại không đúng!";
     }
     return errors;
   };
-  const handleSubmitButton = () => {
-    console.log(data);
+  const handleResetButton = () => {
+    setData({
+      name: "",
+      email: "",
+      phone: "",
+      dateOfBirth: "",
+      idProof: "",
+      password: "",
+      confirmPassword: "",
+    });
+    setFormErrors({
+      name: "",
+      email: "",
+      phone: "",
+      dateOfBirth: "",
+      idProof: "",
+      password: "",
+      confirmPassword: "",
+    });
   };
-  const handleResetButton = () => {};
   return (
     <div className="signup">
       <div className="signup-content">
