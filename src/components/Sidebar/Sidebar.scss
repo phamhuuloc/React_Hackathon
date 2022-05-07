@@ -1,0 +1,47 @@
+.sidebar-panel {
+  background-color: #f1f1f1;
+  &-avatar {
+  }
+  &--not-login {
+    text-align: center;
+    padding: 30px 20px;
+    a {
+      text-decoration: none;
+      font-size: 18px;
+      font-weight: 500;
+      color: tomato;
+      padding: 6px 12px;
+      &:hover {
+        color: #000;
+      }
+    }
+    p {
+      font-size: 14px;
+      line-height: 1.4;
+    }
+  }
+  &-voucher {
+    &-tags {
+    }
+    &-nav {
+      list-style: none;
+      padding-left: 0;
+
+      li {
+        a {
+          text-decoration: none;
+          color: #000;
+          display: block;
+          padding: 10px 15px;
+          cursor: pointer;
+          &:hover {
+            background-color: #eee;
+          }
+        }
+      }
+    }
+  }
+}
+.col-2 {
+  width: 16.66666667%;
+}

@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import "./Register.scss";
 const Register = () => {
   const navigate = useNavigate();
+  const [formErrors, setFormErrors] = useState({});
   const [data, setData] = useState({
     name: "",
     email: "",
@@ -12,16 +13,18 @@ const Register = () => {
     password: "",
     confirmPassword: "",
   });
-  const [formErrors, setFormErrors] = useState({});
   const resgister = (e) => {
     try {
       setFormErrors(validate(data));
       console.log(data);
-      if (formErrors) navigate("/login");
     } catch (err) {
       console.log(err);
     }
   };
+  const handleButtonLogin = () => {
+    navigate("/login");
+  };
+  // validation for from register
   const validate = (values) => {
     const errors = {};
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/i;
@@ -54,6 +57,7 @@ const Register = () => {
     }
     return errors;
   };
+  //  Reset form when reset button clicked
   const handleResetButton = () => {
     setData({
       name: "",
@@ -74,6 +78,7 @@ const Register = () => {
       confirmPassword: "",
     });
   };
+
   return (
     <div className="signup">
       <div className="signup-content">
@@ -85,7 +90,15 @@ const Register = () => {
           <div className="signup-img-content">Đăng ký ngay</div>
         </div>
         <div className="signup-form">
-          <h1 className="signup-form-title">Đăng ký ngay</h1>
+          <div className="signup-form-heading">
+            <h1 className="signup-form-title">Đăng ký ngay</h1>
+            <button
+              className="signup-form-submit"
+              onClick={() => handleButtonLogin()}
+            >
+              Login
+            </button>
+          </div>
           <div className="signup-form-row">
             <div className="signup-form-group">
               <div className="signup-form-input">

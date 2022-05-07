@@ -1,5 +1,18 @@
-.signup {
+.donation {
   height: 100vh;
+  &-type {
+    box-sizing: border-box;
+    padding: 14px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ebebeb;
+    &-option {
+      padding: 14px 20px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #ebebeb;
+    }
+  }
   &-img {
     position: relative;
     width: 385px;
@@ -118,6 +131,19 @@
         background: #329e5e;
         color: #fff;
       }
+    }
+    &-share {
+      font-size: 14px;
+      outline: none;
+      border-radius: 5px;
+      border: 1px solid #ebebeb;
+      width: 100%;
+      height: 200px;
+    }
+    &-share:focus {
+      outline: solid;
+      outline-width: 1px;
+      outline-color: #4fb56d;
     }
   }
 }

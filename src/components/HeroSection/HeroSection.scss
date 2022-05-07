@@ -1,0 +1,53 @@
+.hero-section {
+  position: relative;
+  z-index: 100;
+  &-container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    z-index: 100;
+
+    h1 {
+      font-size: 60px;
+      padding: 0 5%;
+      line-height: 60px;
+      font-weight: 700;
+      color: tomato;
+      text-shadow: rgb(0 0 0 / 75%) 1px 1px 2px;
+      text-transform: capitalize;
+    }
+    h3 {
+      font-size: 24px;
+      padding: 0 5%;
+      line-height: 34px;
+      font-weight: 600;
+      color: #fff;
+      text-shadow: rgb(0 0 0 / 75%) 1px 1px 2px;
+    }
+    button {
+      background: tomato;
+      color: #fff;
+      margin-right: 25px;
+      width: 150px;
+      height: 50px;
+      display: inline-block;
+      font-family: "Poppins";
+      font-weight: bold;
+      font-size: 14px;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      border-radius: 3px;
+      &:hover {
+        background-color: #337747;
+      }
+    }
+  }
+  img {
+    max-width: 100%;
+    object-fit: cover;
+  }
+}
