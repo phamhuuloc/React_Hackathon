@@ -112,6 +112,9 @@ const Navbar = () => {
                   <li>
                     <Link to="/userinfo">Thông tin cá nhân</Link>
                   </li>
+                  <li>
+                    <Link to="/admin/voucher/add">Trang admin</Link>
+                  </li>
                 </ul>
               </li>
               <li className="navbar-menu-icon-score">

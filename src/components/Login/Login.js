@@ -16,14 +16,17 @@ const Login = () => {
         data
       );
       console.log(res);
+      if (res.data.role === "admin") navigate("/admin/voucher/add");
+      else navigate("/");
+
       // dispatch(setUser(res));
       window.localStorage.setItem("token", res.data.token);
-      navigate("/");
     } catch (err) {
       console.log(err);
     }
     setData({ email: "", password: "" });
   };
+
   return (
     <div className="login">
       <div className="login-container">

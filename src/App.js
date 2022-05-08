@@ -7,6 +7,8 @@ import OurStory from "./pages/OurStory/OurStory";
 import Vouchers from "./pages/Vouchers/Vouchers";
 import HowWeWork from "./pages/HowWeWork/HowWeWork";
 import Admin from "./pages/Admin/Admin";
+import History from "./pages/History/History";
+import MyVouchers from "./pages/MyVouchers/MyVouchers";
 function App() {
   return (
     <BrowserRouter>
@@ -18,9 +20,20 @@ function App() {
         <Route path="/story" element={<OurStory />} />
         <Route path="/vouchers" element={<Vouchers />} />
         <Route path="/work" element={<HowWeWork />} />
-        <Route path="/admin/voucher/add" element={<Admin route="/admin/voucher/add"/>} />
-        <Route path="/admin/voucher/list" element={<Admin route="/admin/voucher/list"/>} />
-        <Route path="/admin/supplier/add" element={<Admin route="/admin/supplier/add"/>} />
+        <Route path="/history" element={<History />} />
+        <Route path="/myvoucher" element={<MyVouchers />} />
+        <Route
+          path="/admin/voucher/add"
+          element={<Admin route="/admin/voucher/add" />}
+        />
+        <Route
+          path="/admin/voucher/list"
+          element={<Admin route="/admin/voucher/list" />}
+        />
+        <Route
+          path="/admin/supplier/add"
+          element={<Admin route="/admin/supplier/add" />}
+        />
       </Routes>
     </BrowserRouter>
   );
