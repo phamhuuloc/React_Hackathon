@@ -10,32 +10,21 @@ import { useSelector } from "react-redux";
 
 const Vouchers = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  const [data, setData] = useState([]);
+
   const [dataVoucher, setDataVoucher] = useState({});
   const token = window.localStorage.getItem("token");
   const navigate = useNavigate();
 
-  let vourches = useSelector((state) => state.category.value);
-  // useEffect(() => {
-  //   console.log(vourches);
-  // });
+  let data = useSelector((state) => state.category.value);
+  console.log(data);
 
-  useEffect(() => {
-    const getListVouchers = async () => {
-      const res = await axios.get(
-        "http://adventure-charity.herokuapp.com/api/voucher/list?page=1"
-      );
-      setData(res.data.vouchers);
-    };
-    getListVouchers();
-  }, []);
   const getVoucher = async (id) => {
     try {
       let idVoucher = { voucher_id: id };
 
       if (token) {
         const res = await axios.post(
-          "http://adventure-charity.herokuapp.com/api/user/voucher",
+          "https://adventure-charity.herokuapp.com/api/user/voucher",
           idVoucher,
           {
             headers: {
@@ -53,7 +42,7 @@ const Vouchers = () => {
     }
   };
   const getVocherId = (voucher) => {
-    let voucherInfo = vourches.find((item) => item._id === voucher._id);
+    let voucherInfo = data.find((item) => item._id === voucher._id);
     setDataVoucher(voucherInfo);
   };
   return (
@@ -62,9 +51,8 @@ const Vouchers = () => {
       <div className="change-voucher">
         <div className="change-voucher-post">
           <div className="change-voucher-post-content">
-            <h1> Phần thường chia sẻ</h1>
+            <h1>Phần Thưởng Chia sẻ</h1>
             <h3>Mọi sự sẻ chia đều đáng quý</h3>
-            <h4> Cam on vi da den</h4>
             <p>
               Khi quyên góp và chia sẻ thông tin, để cảm ơn lòng hảo tâm của
               bạn, bạn sẽ nhận lại điểm để đổi các voucher của các nhà tài trợ,
@@ -79,41 +67,45 @@ const Vouchers = () => {
             <Sidebar />
             <div className="change-voucher-cards-grid">
               <div className="change-voucher-cards-row">
-                {data.map((voucher) => {
-                  return (
-                    <div
-                      className="change-voucher-cards-item"
-                      key={voucher._id}
-                    >
-                      <img src={voucher.image} alt="voucher img" />
-                      <div className="change-voucher-cards-item-info">
-                        <div className="change-voucher-cards-item-price">
-                          <span>Điểm:</span>
-                          {voucher.point_cost}
-                        </div>
-                        <div className="change-voucher-cards-item-option">
-                          <button
-                            className="change-voucher-cards-item-option-read"
-                            onClick={() => {
-                              getVocherId(voucher);
-                              setModalOpen(true);
-                            }}
-                          >
-                            Xem thêm
-                          </button>
-                          <button
-                            className="change-voucher-cards-item-option-get"
-                            onClick={() => {
-                              getVoucher(voucher._id);
-                            }}
-                          >
-                            Đổi voucher
-                          </button>
+                {data ? (
+                  data.map((voucher) => {
+                    return (
+                      <div
+                        className="change-voucher-cards-item"
+                        key={voucher._id}
+                      >
+                        <img src={voucher.image} alt="voucher img" />
+                        <div className="change-voucher-cards-item-info">
+                          <div className="change-voucher-cards-item-price">
+                            <span>Điểm:</span>
+                            {voucher.point_cost}
+                          </div>
+                          <div className="change-voucher-cards-item-option">
+                            <button
+                              className="change-voucher-cards-item-option-read"
+                              onClick={() => {
+                                getVocherId(voucher);
+                                setModalOpen(true);
+                              }}
+                            >
+                              Xem thêm
+                            </button>
+                            <button
+                              className="change-voucher-cards-item-option-get"
+                              onClick={() => {
+                                getVoucher(voucher._id);
+                              }}
+                            >
+                              Đổi voucher
+                            </button>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })
+                ) : (
+                  <div></div>
+                )}
               </div>
             </div>
           </div>

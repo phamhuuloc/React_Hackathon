@@ -16,7 +16,7 @@ const MyVouchers = () => {
       }
       if (token) {
         const userResponse = await axios.get(
-          "http://adventure-charity.herokuapp.com/api/user/voucher",
+          "https://adventure-charity.herokuapp.com/api/user/voucher",
           {
             headers: {
               authorization: token,
@@ -34,14 +34,14 @@ const MyVouchers = () => {
     <>
       <Navbar />
       <div className="card-header">
-        <h3 className="card-title">Lịch sử quyên góp</h3>
+        <h3 className="card-title">Voucher Của Tôi</h3>
       </div>
       <table className="table">
         <thead>
           <tr>
-            <th>Loai</th>
-            <th>Số lượng</th>
-            <th>Ngày</th>
+            <th>Mã</th>
+            <th>Loại</th>
+            <th>Nhà cung cấp</th>
             <th>Số điểm</th>
           </tr>
         </thead>

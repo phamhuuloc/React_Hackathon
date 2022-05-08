@@ -69,22 +69,33 @@
         flex-direction: column;
       }
       &-price {
+        font-size: 18px;
         position: absolute;
-        left: 38px;
-        bottom: 64px;
-
+        left: 129px;
+        bottom: 285px;
         color: #55c48f;
-        font-size: 24px;
         font-weight: bold;
+        width: 80px;
+        height: 50px;
+        background-color: #000;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 4px;
+        padding: 0 8px;
         // text-shadow: 1px 1px 2px rgb(0 0 0 / 70%);
       }
       &-option {
         display: flex;
+        align-items: center;
         width: 100%;
         position: absolute;
-        left: 20px;
-        bottom: 20px;
+        left: 1px;
+        bottom: 32px;
+        height: 20px;
         button {
+          font-size: 10px;
           margin-top: 4px;
           padding: 12px 25px;
           color: #fff;

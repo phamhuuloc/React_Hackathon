@@ -23,11 +23,11 @@
     }
   }
 
-  .openToggle{
+  .openToggle {
     display: none;
   }
 
-  .closeToggle{
+  .closeToggle {
     display: none;
   }
 
@@ -54,12 +54,13 @@
         // color: tomato;
         .navbar-submenu {
           transition: all 0.2s linear 0s;
-          display: none;
+          visibility: visible;
           opacity: 1;
           position: absolute;
         }
       }
       &-score {
+        font-size: 16px;
         color: #60e0af;
         margin: 0 4px;
         span {
@@ -190,7 +191,7 @@
         height: 40px;
       }
     }
-    &-menu{
+    &-menu {
       margin: 0 auto;
       position: fixed;
       top: 0;
@@ -204,23 +205,22 @@
       align-items: stretch;
       transition: all 0.2s linear;
       transform: translateX(110%);
-      &.is-show{
+      &.is-show {
         transform: translateX(0);
       }
     }
-    .closeToggle{
+    .closeToggle {
       margin-top: 28px;
       display: block;
       margin-left: 216px;
     }
 
-    .openToggle{
+    .openToggle {
       display: block;
       margin-left: 60px;
     }
   }
 }
-
 
 @media screen and (max-width: 620px) {
   .navbar {
@@ -230,13 +230,13 @@
         height: 40px;
       }
     }
-    .closeToggle{
+    .closeToggle {
       margin-top: 14px;
       display: block;
       margin-left: 216px;
     }
 
-    .openToggle{
+    .openToggle {
       display: block;
       margin-left: 30px;
     }

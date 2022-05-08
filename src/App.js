@@ -7,10 +7,30 @@ import OurStory from "./pages/OurStory/OurStory";
 import Vouchers from "./pages/Vouchers/Vouchers";
 import HowWeWork from "./pages/HowWeWork/HowWeWork";
 import Admin from "./pages/Admin/Admin";
-import "./__global.scss"
+import "./__global.scss";
 import History from "./pages/History/History";
 import MyVouchers from "./pages/MyVouchers/MyVouchers";
+// Import the functions you need from the SDKs you need
+import { initializeApp } from "firebase/app";
+import { getAnalytics } from "firebase/analytics";
+// TODO: Add SDKs for Firebase products that you want to use
+// https://firebase.google.com/docs/web/setup#available-libraries
 
+// Your web app's Firebase configuration
+// For Firebase JS SDK v7.20.0 and later, measurementId is optional
+const firebaseConfig = {
+  apiKey: "AIzaSyCqzKcz0DfnNr8xWFfrir_ArQXbyHovBK0",
+  authDomain: "reacthackathon-cd18a.firebaseapp.com",
+  projectId: "reacthackathon-cd18a",
+  storageBucket: "reacthackathon-cd18a.appspot.com",
+  messagingSenderId: "56881570076",
+  appId: "1:56881570076:web:db19068fad7fef95815ad9",
+  measurementId: "G-JEZXQER9YF",
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+const analytics = getAnalytics(app);
 function App() {
   return (
     <BrowserRouter>
@@ -23,9 +43,10 @@ function App() {
         <Route path="/vouchers" element={<Vouchers />} />
         <Route path="/work" element={<HowWeWork />} />
 
-
-        <Route path="/admin/voucher/edit/:id" element={<Admin route="/admin/voucher/edit"/>} />
-
+        <Route
+          path="/admin/voucher/edit/:id"
+          element={<Admin route="/admin/voucher/edit" />}
+        />
 
         <Route path="/history" element={<History />} />
         <Route path="/myvoucher" element={<MyVouchers />} />
@@ -41,7 +62,6 @@ function App() {
           path="/admin/supplier/add"
           element={<Admin route="/admin/supplier/add" />}
         />
-
       </Routes>
     </BrowserRouter>
   );

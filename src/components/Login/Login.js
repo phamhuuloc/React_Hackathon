@@ -12,7 +12,7 @@ const Login = () => {
     try {
       e.preventDefault();
       const res = await axios.post(
-        "http://adventure-charity.herokuapp.com/api/auth/login",
+        "https://adventure-charity.herokuapp.com/api/auth/login",
         data
       );
       console.log(res);
@@ -56,7 +56,7 @@ const Login = () => {
           <p>Quên mật khẩu</p>
           <input
             type="button"
-            value="Đăng nhập để quên góp"
+            value="Đăng Nhập"
             className="login-form-button"
             onClick={(e) => login(e)}
           />

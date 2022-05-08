@@ -9,28 +9,27 @@ import axios from "axios";
 const Sidebar = () => {
   const token = window.localStorage.getItem("token");
   const dispatch = useDispatch();
-  const [data, setData] = useState({});
+  const [data, setData] = useState();
   const [categoryVoucher, setCategoryVoucher] = useState("tatca");
 
   let user = useSelector((state) => state.user.value);
   dispatch(setCategory(data));
-
+  console.log(categoryVoucher);
   const getListVouchers = async (categoryVoucher) => {
     if (categoryVoucher === "tatca") {
       const res = await axios.get(
-        "http://adventure-charity.herokuapp.com/api/voucher/list?page=1"
+        "https://adventure-charity.herokuapp.com/api/voucher/list?page=1"
       );
       setData(res.data.vouchers);
     } else {
       const res = await axios.get(
-        ` http://adventure-charity.herokuapp.com/api/voucher/category/${categoryVoucher}`
+        ` https://adventure-charity.herokuapp.com/api/voucher/category/${categoryVoucher}`
       );
       setData(res.data.vouchers);
     }
   };
 
-  // setData(vourches);
-
+  dispatch(setCategory(data));
   return (
     <div className="sidebar-panel col-2">
       <div className="sidebar-panel-avatar">
@@ -73,7 +72,7 @@ const Sidebar = () => {
                 getListVouchers("quanao");
               }}
             >
-              >Quần áo{" "}
+              Quần áo
             </li>
             <li
               onClick={() => {
