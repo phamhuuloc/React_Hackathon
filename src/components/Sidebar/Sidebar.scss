@@ -2,6 +2,20 @@
   background-color: #f1f1f1;
   &-avatar {
   }
+  &--login {
+    text-align: center;
+    h2 {
+      font-size: 18px;
+      font-weight: 500;
+      color: tomato;
+    }
+    p {
+      strong {
+        color: #000;
+      }
+      color: #60e0af;
+    }
+  }
   &--not-login {
     text-align: center;
     padding: 30px 20px;
@@ -28,15 +42,19 @@
       padding-left: 0;
 
       li {
+        text-decoration: none;
+        color: #000;
+        display: block;
+        padding: 10px 15px;
+        cursor: pointer;
+        &:hover {
+          background-color: #eee;
+        }
+      }
+      li:first-child {
+        background-color: #f2540c;
         a {
-          text-decoration: none;
-          color: #000;
-          display: block;
-          padding: 10px 15px;
-          cursor: pointer;
-          &:hover {
-            background-color: #eee;
-          }
+          color: #fff;
         }
       }
     }
