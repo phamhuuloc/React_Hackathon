@@ -5,7 +5,7 @@ import { FiGift } from "react-icons/fi";
 import logo from "../../img/logo.png";
 import "./Navbar.scss";
 const Navbar = () => {
-  const isUser = true;
+  const isUser = false;
   const navigate = useNavigate;
 
   return (
@@ -68,10 +68,10 @@ const Navbar = () => {
           ) : (
             <>
               <li className="navbar-register">
-                <Link to="/register">Đăng nhập</Link>
+                <Link to="/login">Đăng nhập</Link>
               </li>
               <li className="navbar-login">
-                <Link to="/login">Đăng ký</Link>
+                <Link to="/register">Đăng ký</Link>
               </li>
             </>
           )}

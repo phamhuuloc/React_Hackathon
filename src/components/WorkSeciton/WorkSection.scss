@@ -1,35 +1,43 @@
 .work-section {
   padding: 0 20px;
   text-align: center;
+  margin-top: 80px;
+  &-title {
+    font-weight: 700;
+  }
+
   h1 {
     text-align: center;
-    color: tomato;
+    color: #45945d;
     text-transform: uppercase;
   }
   &-container {
+    margin-top: 60px;
     display: flex;
   }
   &-item {
     text-align: center;
-    width: 383px;
+    width: 33%;
     padding: 0 38px;
     h4 {
       font-size: 20px;
-      color: tomato;
+      color: #45945d;
     }
     p {
       text-align: center;
       font-size: 15px;
       letter-spacing: 0.8px;
     }
+    &-title {
+      font-weight: 600;
+    }
   }
   button {
-    background: tomato;
+    background: #45945d;
     color: #fff;
     width: 150px;
     height: 50px;
     display: inline-block;
-    font-family: "Poppins";
     font-weight: bold;
     font-size: 14px;
     padding: 10px;

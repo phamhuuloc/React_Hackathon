@@ -24,6 +24,7 @@
   &-menu {
     list-style: none;
     display: flex;
+    margin: auto;
     &-icon {
       font-size: 20px;
       margin: 0 20px;
@@ -31,7 +32,8 @@
       cursor: pointer;
       position: relative;
       a {
-        color: #000;
+        color: #45945d;
+        font-weight: 500;
       }
       & > .navbar-submenu {
         left: -19px;
@@ -39,7 +41,7 @@
       &:hover {
         a {
           transition: all 0.2s linear;
-          color: tomato;
+          color: #6cc888;
           .navbar-submenu {
             transition: all 0.2s linear 0s;
             visibility: visible;
@@ -49,28 +51,29 @@
         }
       }
       &-score {
-        color: #60e0af;
+        color: tomato;
         span {
           font-size: 16px;
-          color: #000;
+          color: #45945d;
         }
       }
     }
     &-icons {
       display: flex;
       align-items: center;
+      margin: auto 0;
       list-style: none;
     }
     &-item {
       margin: 0 20px;
       cursor: pointer;
       transition: all 0.2s linear;
-      font-weight: 500;
       padding: 10px;
       position: relative;
       a {
         text-decoration: none;
-        color: #000;
+        color: black;
+        font-weight: 700;
       }
       &:hover {
         .navbar-submenu {
@@ -96,14 +99,14 @@
     width: 210px;
     box-shadow: 0 0 10px 3px rgb(0 0 0 / 5%);
     padding: 17px 0;
-    border-top: 3px solid #ff2020;
+    border-top: 3px solid #45945d;
     border-radius: 7px 7px 3px 3px;
     opacity: 0;
     visibility: hidden;
     &::before {
       border-style: solid;
       border-width: 0 6px 6px 6px;
-      border-color: transparent transparent red transparent;
+      border-color: transparent transparent #45945d transparent;
       content: "";
       top: -8px;
       left: 13%;
@@ -128,21 +131,18 @@
         color: #000;
       }
       a:hover {
-        color: tomato;
+        color: #45945d;
         transition: all 0.3s ease-out 0s;
       }
     }
   }
 
   &-register {
-    background: #329e5e;
+    background: #45945d;
     color: #fff;
     margin-right: 25px;
-    width: 120px;
-    height: 20px;
     text-align: center;
     display: inline-block;
-    font-family: "Poppins";
     font-weight: bold;
     font-size: 14px;
     padding: 10px;
@@ -167,7 +167,7 @@
       padding: 10px;
     }
     a:hover {
-      color: tomato;
+      color: #45945d;
     }
   }
 }
