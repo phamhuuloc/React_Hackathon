@@ -1,36 +1,47 @@
 import React from "react";
 import "./Modal.scss";
-const Modal = ({ setOpenModal }) => {
-  console.log(setOpenModal);
+const Modal = (prop) => {
+  console.log(prop);
   return (
     <div className="modal-background">
       <div className="modal-container">
+        <div className="modal-img">
+          <img src={prop.data.image} alt="" />
+        </div>
+
         <div className="modal-close-btn">
           <button
             onClick={() => {
-              setOpenModal(false);
+              prop.setOpenModal(false);
             }}
           >
             X
           </button>
         </div>
         <div className="modal-title">
-          <h1>Are You Sure You Want to Continue?</h1>
+          <h3>Nhà cung cấp:{prop.data.supplier_name}</h3>
         </div>
         <div className="modal-body">
-          <p>The next page looks amazing. Hope you want to go there!</p>
+          <p>
+            <strong>Loại: </strong> {prop.data.category}
+          </p>
+          <p>
+            <strong>Mô tả:</strong> {prop.data.description}
+          </p>
+          <p>
+            <strong>Điểm quy đổi: </strong> {prop.data.point_cost}
+          </p>
         </div>
         <div className="modal-footer">
           <button
             onClick={() => {
-              setOpenModal(false);
+              prop.setOpenModal(false);
             }}
             id="cancelBtn"
             className="modal-cancel-btn"
           >
             Cancel
           </button>
-          {/* <button className="modal-">Continue</button> */}
         </div>
       </div>
     </div>

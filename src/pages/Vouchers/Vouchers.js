@@ -1,11 +1,61 @@
 import Navbar from "../../components/Navbar/Navbar";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "./Vouchers.scss";
 import Modal from "../../components/Modal/Modal";
+import axios from "axios";
+import { AiFillYuque } from "react-icons/ai";
+import { useNavigate } from "react-router-dom";
+import { useSelector } from "react-redux";
+
 const Vouchers = () => {
   const [modalOpen, setModalOpen] = useState(false);
-  console.log(modalOpen);
+  const [data, setData] = useState([]);
+  const [dataVoucher, setDataVoucher] = useState({});
+  const token = window.localStorage.getItem("token");
+  const navigate = useNavigate();
+
+  let vourches = useSelector((state) => state.category.value);
+  // useEffect(() => {
+  //   console.log(vourches);
+  // });
+
+  useEffect(() => {
+    const getListVouchers = async () => {
+      const res = await axios.get(
+        "http://adventure-charity.herokuapp.com/api/voucher/list?page=1"
+      );
+      setData(res.data.vouchers);
+    };
+    getListVouchers();
+  }, []);
+  const getVoucher = async (id) => {
+    try {
+      let idVoucher = { voucher_id: id };
+
+      if (token) {
+        const res = await axios.post(
+          "http://adventure-charity.herokuapp.com/api/user/voucher",
+          idVoucher,
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+        alert(res.data.message);
+      } else {
+        navigate("/login");
+      }
+    } catch (err) {
+      alert(err.response.data.message);
+      console.log(err);
+    }
+  };
+  const getVocherId = (voucher) => {
+    let voucherInfo = vourches.find((item) => item._id === voucher._id);
+    setDataVoucher(voucherInfo);
+  };
   return (
     <>
       <Navbar />
@@ -29,38 +79,46 @@ const Vouchers = () => {
             <Sidebar />
             <div className="change-voucher-cards-grid">
               <div className="change-voucher-cards-row">
-                <div className="change-voucher-cards-item">
-                  <img
-                    src="https://sadsindia.org/wp-content/uploads/2022/04/Airbnb_1200x1500.jpg"
-                    alt=""
-                  />
-                  <div className="change-voucher-cards-item-info">
-                    <div className="change-voucher-cards-item-price">10000</div>
-                    <button className="change-voucher-cards-item-button">
-                      READ MORE
-                    </button>
-                  </div>
-                </div>
-                <div className="change-voucher-cards-item">
-                  <img
-                    src="https://sadsindia.org/wp-content/uploads/2022/04/Airbnb_1200x1500.jpg"
-                    alt=""
-                  />
-                  <div className="change-voucher-cards-item-info">
-                    <div className="change-voucher-cards-item-price">10000</div>
-                    <button
-                      className="change-voucher-cards-item-button"
-                      onClick={() => setModalOpen(true)}
+                {data.map((voucher) => {
+                  return (
+                    <div
+                      className="change-voucher-cards-item"
+                      key={voucher._id}
                     >
-                      READ MORE
-                    </button>
-                  </div>
-                </div>
+                      <img src={voucher.image} alt="voucher img" />
+                      <div className="change-voucher-cards-item-info">
+                        <div className="change-voucher-cards-item-price">
+                          <span>Điểm:</span>
+                          {voucher.point_cost}
+                        </div>
+                        <div className="change-voucher-cards-item-option">
+                          <button
+                            className="change-voucher-cards-item-option-read"
+                            onClick={() => {
+                              getVocherId(voucher);
+                              setModalOpen(true);
+                            }}
+                          >
+                            Xem thêm
+                          </button>
+                          <button
+                            className="change-voucher-cards-item-option-get"
+                            onClick={() => {
+                              getVoucher(voucher._id);
+                            }}
+                          >
+                            Đổi voucher
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </div>
         </div>
-        {modalOpen && <Modal setOpenModal={setModalOpen} />}
+        {modalOpen && <Modal setOpenModal={setModalOpen} data={dataVoucher} />}
       </div>
     </>
   );

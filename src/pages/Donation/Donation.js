@@ -1,38 +1,70 @@
 import React from "react";
 import { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
+import axios from "axios";
 import "./Donation.scss";
+import { useNavigate } from "react-router-dom";
 const Donation = () => {
+  const navigate = useNavigate();
+  const [message, setMessage] = useState("");
   const [data, setData] = useState({
     typeDonation: "",
     cartId: "",
-    amount: "",
+    money: 0,
+    amount: 0,
     address: "",
     shareIdea: "",
   });
-  const handleButtonSubmit = () => {
-    console.log(data);
-    setData({
-      typeDonation: "",
-      cartId: "",
-      money: "",
-      address: "",
-      amount: "",
-      shareIdea: "",
-    });
-  };
   const handleResetButton = () => {
     setData({
       typeDonation: "",
       cartId: "",
-      money: "",
-      amount: "",
+      money: 0,
+      amount: 0,
       shareIdea: "",
+      address: "",
     });
   };
   const handeSelected = (e) => {
     setData({ ...data, typeDonation: e.target.value });
   };
+  const token = window.localStorage.getItem("token");
+  const donation = async (e) => {
+    try {
+      let data_1 = {
+        type_of_donation: data.typeDonation,
+        money: data.money === "" ? 0 : Number(data.money),
+        clothes_amount: data.amount === "" ? 0 : Number(data.amount),
+        address: data.address,
+        card_id: data.cartId,
+      };
+      if (token) {
+        const res = await axios.post(
+          "http://adventure-charity.herokuapp.com/api/user/donation",
+          data_1,
+          {
+            headers: {
+              authorization: token,
+            },
+          }
+        );
+        alert(res.data.message);
+      }
+      setData({
+        typeDonation: "",
+        cartId: "",
+        money: 0,
+        address: "",
+        amount: 0,
+        shareIdea: "",
+      });
+    } catch (err) {
+      alert(err.response.data.message);
+      console.log(err);
+    }
+  };
+  console.log(message);
+
   return (
     <>
       <Navbar />
@@ -56,22 +88,22 @@ const Donation = () => {
                       setData({ ...data, typeDonation: e.target.value })
                     }
                   >
-                    <option value="clothes" className="donation-type-option">
+                    <option value="2" className="donation-type-option">
                       Quyên góp quần áo
                     </option>
-                    <option value="money" className="donation-type-option">
+                    <option value="1" className="donation-type-option">
                       Quyên góp tiền
                     </option>
                   </select>
                 </div>
                 <p className="donation-form-error"></p>
-                {data.typeDonation === "money" ? (
+                {data.typeDonation === "1" ? (
                   <div className="donation-form-input">
-                    <label htmlFor="email">
+                    <label htmlFor="cartId">
                       Số tài khoản ngân hàng của bạn
                     </label>
                     <input
-                      type="text"
+                      type="number"
                       name="cartId"
                       id="cartId"
                       className="cartId"
@@ -97,21 +129,37 @@ const Donation = () => {
                   </div>
                 )}
                 <p className="donation-form-error"></p>
-                <div className="donation-form-input">
-                  <label htmlFor="phone">
-                    {data.typeDonation === "money" ? "SỐ tiền" : "Số lượng"}
-                  </label>
-                  <input
-                    type="text"
-                    name="phone"
-                    id="phone"
-                    className="phone"
-                    value={data.amount}
-                    onChange={(e) =>
-                      setData({ ...data, amount: e.target.value })
-                    }
-                  />
-                </div>
+                {data.typeDonation === "1" ? (
+                  <div className="donation-form-input">
+                    <label htmlFor="money">Số tiền</label>
+                    <input
+                      type="number"
+                      name="money"
+                      id="money"
+                      className="phone"
+                      value={data.money}
+                      min="0"
+                      onChange={(e) =>
+                        setData({ ...data, money: e.target.value })
+                      }
+                    />
+                  </div>
+                ) : (
+                  <div className="donation-form-input">
+                    <label htmlFor="money">Số lượng</label>
+                    <input
+                      type="number"
+                      name="money"
+                      id="money"
+                      className="phone"
+                      min="0"
+                      value={data.amount}
+                      onChange={(e) =>
+                        setData({ ...data, amount: e.target.value })
+                      }
+                    />
+                  </div>
+                )}
 
                 <p className="donation-form-error"></p>
                 <p className="donation-form-error"></p>
@@ -140,13 +188,13 @@ const Donation = () => {
             <div className="donation-form-button">
               <button
                 className="donation-form-submit"
-                onClick={() => handleButtonSubmit()}
+                onClick={() => donation()}
               >
                 SUBMIT
               </button>
               <button
                 className="donation-form-reset"
-                onClick={() => handleResetButton()}
+                onClick={(e) => handleResetButton(e)}
               >
                 RESET
               </button>

@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import axiosClient from "../../apis/items/axiosClient";
+import axios from "axios";
 import "./Register.scss";
+
 const Register = () => {
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState({});
@@ -13,17 +16,45 @@ const Register = () => {
     password: "",
     confirmPassword: "",
   });
-  const resgister = (e) => {
+
+  const [isSubmit, setIsSubmit] = useState(false);
+
+  const resgister = async (e) => {
     try {
+      e.preventDefault();
       setFormErrors(validate(data));
-      console.log(data);
+      setIsSubmit(true);
+      let data_1 = {
+        email: data.email,
+        password: data.password,
+        fullname: data.name,
+        phonenumber: data.phone,
+        cmnd: data.idProof,
+      };
+      const res = await axios.post(
+        "http://adventure-charity.herokuapp.com/api/auth/register",
+        data_1
+      );
+      console.log(res);
+      alert("dang ky thanh cong");
+      navigate("/login");
     } catch (err) {
       console.log(err);
     }
   };
+
+  useEffect(() => {
+    console.log(formErrors);
+
+    if (Object.keys(formErrors).length === 0 && isSubmit) {
+      console.log(data);
+    }
+  }, [formErrors]);
+
   const handleButtonLogin = () => {
     navigate("/login");
   };
+
   // validation for from register
   const validate = (values) => {
     const errors = {};

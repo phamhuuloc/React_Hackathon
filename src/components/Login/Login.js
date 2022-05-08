@@ -1,20 +1,24 @@
+import axios from "axios";
 import { useId, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import axiosClient from "../../apis/items/axiosClient";
 import "./Login.scss";
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
-  const login = (e) => {
+
+  const login = async (e) => {
     try {
       e.preventDefault();
-      // const res = await axiosClient.post("auth/login?", data);
-      // console.log(res);
+      const res = await axios.post(
+        "http://adventure-charity.herokuapp.com/api/auth/login",
+        data
+      );
+      console.log(res);
       // dispatch(setUser(res));
-      // window.localStorage.setItem("token", res.token);
-      // navigate("/");
-      console.log(data);
-      navigate("/login");
+      window.localStorage.setItem("token", res.data.token);
+      navigate("/");
     } catch (err) {
       console.log(err);
     }
