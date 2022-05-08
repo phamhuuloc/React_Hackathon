@@ -1,0 +1,109 @@
+.change-voucher {
+  padding-left: 20px;
+  padding-right: 20px;
+  max-width: 1140px;
+  margin: 0 auto;
+  max-width: 1140px;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+
+  &-post {
+    &-content {
+      margin-top: 50px;
+      h1,
+      h3,
+      h4 {
+        text-align: center;
+        color: tomato;
+        font-size: 32px;
+        letter-spacing: 2px;
+        font-weight: bold;
+        margin-bottom: 5%;
+        text-transform: uppercase;
+      }
+      h3 {
+        font-size: 20px;
+        text-align: left;
+      }
+      h4 {
+        font-size: 20px;
+        color: #000;
+      }
+      p {
+        font-size: 16px;
+        font-weight: 500;
+        letter-spacing: 1.6px;
+        line-height: 26px;
+      }
+    }
+  }
+  &-cards {
+    display: flex;
+    &-grid {
+      width: 83.33333333%;
+      text-align: justify;
+      font-size: 0;
+      padding: 0 20px;
+      margin-top: -2px;
+    }
+
+    &-row {
+      display: flex;
+      width: 100%;
+    }
+    &-item {
+      display: inline-block;
+      text-align: center;
+      width: 33.33333%;
+      padding: 2px;
+      overflow: hidden;
+      position: relative;
+      min-width: 200px;
+      img {
+        max-width: 100%;
+        object-fit: cover;
+      }
+      &-info {
+        display: flex;
+        flex-direction: column;
+      }
+      &-price {
+        position: absolute;
+        left: 38px;
+        bottom: 64px;
+
+        color: #55c48f;
+        font-size: 24px;
+        font-weight: bold;
+        // text-shadow: 1px 1px 2px rgb(0 0 0 / 70%);
+      }
+      &-option {
+        display: flex;
+        width: 100%;
+        position: absolute;
+        left: 20px;
+        bottom: 20px;
+        button {
+          margin-top: 4px;
+          padding: 12px 25px;
+          color: #fff;
+          background-color: rgba(0, 0, 0, 0.7);
+          border: 1px solid;
+          border-color: #fff !important;
+          border-radius: 20px;
+          transition: all 0.2s;
+          box-shadow: 1px 1px 4px 0px rgb(0 0 0 / 40%);
+          outline: none;
+          cursor: pointer;
+          transition: all 0.2s ease-in;
+          margin: 0 2px;
+          &:hover {
+            color: #000;
+            background-color: #fff;
+          }
+        }
+      }
+    }
+  }
+}

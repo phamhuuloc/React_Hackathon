@@ -1,0 +1,149 @@
+.donation {
+  height: 100vh;
+  &-type {
+    box-sizing: border-box;
+    padding: 14px 20px;
+    font-size: 14px;
+    border-radius: 5px;
+    border: 1px solid #ebebeb;
+    &-option {
+      padding: 14px 20px;
+      font-size: 14px;
+      border-radius: 5px;
+      border: 1px solid #ebebeb;
+    }
+  }
+  &-img {
+    position: relative;
+    width: 385px;
+    img {
+      max-width: 100%;
+      object-fit: cover;
+    }
+    &-content {
+      position: absolute;
+      width: 100%;
+      text-align: center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      color: #fff;
+      font-size: 20px;
+      font-weight: bold;
+    }
+  }
+  &-content {
+    display: flex;
+
+    // background-color: #b3f7e4;
+  }
+  &-form {
+    // padding: 93px 115px 90px 80px;
+    padding: 40px 80px;
+    margin-bottom: -8px;
+    width: 100%;
+    &-heading {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      button {
+        background-color: tomato;
+      }
+    }
+    &-title {
+      color: #55c48f;
+    }
+    &-row {
+      display: flex;
+    }
+    &-group {
+      width: 50%;
+      padding: 0 30px;
+    }
+    &-error {
+      color: tomato;
+      font-size: 14px;
+    }
+    &-input {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 18px;
+
+      label {
+        font-weight: bold;
+        text-transform: uppercase;
+        margin-bottom: 7px;
+        font-size: 14px;
+      }
+      input {
+        box-sizing: border-box;
+        padding: 14px 20px;
+        font-size: 14px;
+        border-radius: 5px;
+        border: 1px solid #ebebeb;
+      }
+      input:focus {
+        outline: solid;
+        outline-width: 1px;
+        outline-color: #4fb56d;
+      }
+    }
+    &-button {
+      width: 100%;
+      text-align: right;
+      margin-top: 50px;
+    }
+    &-submit {
+      background: #329e5e;
+      color: #fff;
+      margin-right: 25px;
+      width: 150px;
+      height: 50px;
+      display: inline-block;
+      font-family: "Poppins";
+      font-weight: bold;
+      font-size: 14px;
+      padding: 10px;
+      border: none;
+      cursor: pointer;
+      text-transform: uppercase;
+      border-radius: 3px;
+      &:hover {
+        background-color: #337747;
+      }
+    }
+    &-reset {
+      display: block;
+      background: #fff;
+      color: #999;
+      border: 2px solid #ebebeb;
+      border-radius: 3px;
+      width: 150px;
+      height: 50px;
+      display: inline-block;
+      font-family: "Poppins";
+      font-weight: bold;
+      font-size: 14px;
+      padding: 10px;
+      cursor: pointer;
+      text-transform: uppercase;
+      &:hover {
+        background: #329e5e;
+        color: #fff;
+      }
+    }
+    &-share {
+      font-size: 14px;
+      outline: none;
+      border-radius: 5px;
+      border: 1px solid #ebebeb;
+      width: 100%;
+      height: 200px;
+    }
+    &-share:focus {
+      outline: solid;
+      outline-width: 1px;
+      outline-color: #4fb56d;
+    }
+  }
+}
