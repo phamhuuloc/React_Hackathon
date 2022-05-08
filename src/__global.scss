@@ -1,0 +1,168 @@
+* {
+    margin: 0;
+    padding: 0;
+  }
+  
+  body {
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Varela Round', sans-serif;
+    /* } */
+  }
+  
+/* Mobile text */
+h1 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 40px;
+    line-height: 48px;
+  }
+  
+  h2 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 32px;
+    line-height: 38px;
+  }
+  
+  h3 {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 21px
+  }
+  
+  h4 {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 16px;
+    line-height: 19px;
+  }
+  
+  button {
+    font-style: normal;
+    font-weight: bold;
+    font-size: 16px;
+    line-height: 19px;
+    padding: 16px 42px;
+  }
+  
+  h5 {
+    font-style: normal;
+    font-weight: normal; 
+    font-size: 12px;
+    line-height: 14px;
+  }
+  
+  h6 {
+    font-style: normal;
+    font-weight: normal; 
+    font-size: 12px;
+    line-height: 14px;
+  }
+  
+  p {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px; 
+    line-height: 24px;
+  }
+  
+  /* iPad mini text */
+  @media (min-width: 640px) {
+    h1 {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 40px;
+      line-height: 48px;
+    }
+  
+    h4 {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 24px;
+    }
+    
+    button {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 29px;
+      padding: 12px 34px;
+    }
+    
+  
+    h6 {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 20px;
+    }
+  
+  }
+  
+  /* lg text */
+  @media (min-width: 1024px) {
+    h1 {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 48px;
+      line-height: 57px;
+    }
+    
+  
+    h4 {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 24px;
+      line-height: 27px;
+    }
+    
+    button {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 24px;
+      line-height: 28px;
+      padding: 12px 36px;
+    }
+    
+    h6 {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 16px;
+      line-height: 19px;
+    }
+  
+  }
+  
+  /* Desktop text */
+  @media (min-width: 1280px) {
+    h1 {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 64px;
+      line-height: 76px;
+    }
+    h4 {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 28px;
+      line-height: 33px;
+    }
+    
+    button {
+      font-style: normal;
+      font-weight: bold;
+      font-size: 20px;
+      line-height: 24px;
+      padding: 16px 40px;
+    }
+    h6 {
+      font-style: normal;
+      font-weight: normal;
+      font-size: 20px;
+      line-height: 24px;
+    }
+  }
+  

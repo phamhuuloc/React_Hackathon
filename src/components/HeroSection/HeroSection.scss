@@ -1,20 +1,20 @@
 .hero-section {
   position: relative;
-  z-index: 100;
+  z-index: 50;
   &-container {
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    z-index: 100;
+    z-index: 50;
 
     h1 {
       font-size: 60px;
       padding: 0 5%;
       line-height: 60px;
       font-weight: 700;
-      color: tomato;
+      color: #45945d;
       text-shadow: rgb(0 0 0 / 75%) 1px 1px 2px;
       text-transform: capitalize;
     }
@@ -28,10 +28,9 @@
       text-shadow: rgb(0 0 0 / 75%) 1px 1px 2px;
     }
     button {
-      background: tomato;
+      background: #45945d;
       color: #fff;
       margin-top: 40px;
-      margin-right: 25px;
       width: 150px;
       height: 50px;
       display: inline-block;
@@ -50,5 +49,67 @@
   img {
     max-width: 100%;
     object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 1360px) {
+
+}
+
+@media screen and (max-width: 820px) {
+  .hero-section {
+    
+    &-container {
+      
+  
+      h1 {
+        font-size: 36px;
+        line-height: 40px;
+      }
+
+      h3 {
+        font-size: 24px;
+        line-height: 28px;
+        margin-top: 24px;
+      }
+      button {
+        font-size: 12px;
+        line-height: 20px;
+        width: 100px;
+        height: 40px;
+        margin-top: 24px;
+      }
+    }
+    img {
+      
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .hero-section {
+    
+    &-container {
+      
+  
+      h1 {
+        font-size: 24px;
+        line-height: 28px;
+      }
+
+      h3 {
+        display: none;
+      }
+      button {
+        font-size: 12px;
+        line-height: 20px;
+        width: 100px;
+        height: 40px;
+        margin-top: 24px;
+      }
+    }
+    img {
+      
+    }
   }
 }

@@ -5,6 +5,7 @@ import ListVoucher from "../../components/AdminContent/Voucher/ListVoucher";
 import Navbar from "../../components/Navbar/Navbar";
 import SidebarAdmin from "../../components/SidebarAdmin/SidebarAdmin";
 import "./Admin.scss";
+import EditVoucher from "../../components/AdminContent/Voucher/EditVoucher.";
 
 const Admin = ({ route }) => {
         const body = (
@@ -14,6 +15,9 @@ const Admin = ({ route }) => {
                 }
                 {
                     (route === '/admin/voucher/list') && <ListVoucher />
+                }
+                {
+                    (route === '/admin/voucher/edit') && <EditVoucher />
                 }
                 {
                     (route === '/admin/supplier/add') && <AddSupplier />

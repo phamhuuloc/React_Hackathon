@@ -9,7 +9,8 @@ import { setUser } from "../../redux/reducer/userSlice";
 import "./Navbar.scss";
 import axios from "axios";
 const Navbar = () => {
-  const isUser = true;
+  const [navbarOpen, setNavbarOpen] = useState(false)
+
   const navigate = useNavigate;
 
   let user = useSelector((state) => state.user.value);
@@ -26,6 +27,7 @@ const Navbar = () => {
   let token = window.localStorage.getItem("token");
   // useEffect and the context API to check if a user i logged in and protect a
   // route
+  
   //
   const [userData, setUserData] = useState({
     token: "",
@@ -57,13 +59,21 @@ const Navbar = () => {
 
     checkLoggedIn();
   }, []);
+
+  const handleToggle = () => {
+    setNavbarOpen(!navbarOpen)
+  }
+
   return (
     <div className="navbar">
       <div className="navbar-container">
         <Link className="navbar-logo" to="/">
           <img src={logo} alt="" />
         </Link>
-        <ul className="navbar-menu">
+        <ul className={`navbar-menu ${navbarOpen ? "is-show" : ""}`}>
+          <span className="closeToggle" onClick={handleToggle}>
+            <i className='fa fa-times'></i>          
+          </span>
           <li className="navbar-menu-item">
             <Link to="/story">Giới thiệu</Link>
             <ul className="navbar-submenu">
@@ -71,7 +81,7 @@ const Navbar = () => {
                 <Link to="/story">Câu chuyện của chúng tôi!</Link>
               </li>
               <li>
-                <Link to="/work">Cách chùng tôi hoạt động!</Link>
+                <Link to="/work">Cách chúng tôi hoạt động!</Link>
               </li>
             </ul>
           </li>
@@ -137,6 +147,9 @@ const Navbar = () => {
               </li>
             </>
           )}
+          <span className="openToggle" onClick={handleToggle}>
+            <i className='fa fa-bars'></i>          
+          </span>
         </ul>
       </div>
     </div>
