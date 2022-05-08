@@ -3,9 +3,7 @@
   &-content {
     padding-left: 20px;
     padding-right: 20px;
-    max-width: 1140px;
     margin: 0 auto;
-    max-width: 1140px;
     margin-left: auto;
     margin-right: auto;
     h1,
@@ -34,10 +32,12 @@
   &-img {
     text-align: center;
     margin-top: 30px;
-    max-width: 100%;
     object-fit: cover;
     border: 2px solid #45945d;
     border-radius: 12px;
     margin: 40px;
+    img {
+      width: 100%;
+    }
   }
 }

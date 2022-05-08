@@ -3,20 +3,21 @@
   padding: 30px 0;
   &-title {
     color: #45945d;
-    font-weight: 700px;
+    font-weight: 700;
     margin: 20px 0;
   }
   &-row {
-    display: flex;
-    margin-top: 30px;
-    align-items: center;
+    display: grid;
+    margin-top: 72px;
+    column-gap: 72px;
+    row-gap: 72px;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
   &-block {
-    width: 33%;
+    width: 100%;
     padding: 20px 30px;
     border: 2px solid #45945d;
     border-radius: 12px;
-    margin: 40px;
     box-shadow: 10px 10px 8px 10px #888888;
     img {
       width: 389px;
@@ -26,7 +27,7 @@
     }
     h4 {
       color: #45945d;
-      font-weight: 700px;
+      font-weight: 500;
       margin: 20px 0;
     }
     p {
@@ -35,7 +36,7 @@
     }
   }
   button {
-    margin-top: 20px;
+    margin-top: 72px;
     background: #45945d;
     color: #fff;
     margin-right: 25px;
@@ -51,6 +52,70 @@
     border-radius: 3px;
     &:hover {
       background-color: #337747;
+    }
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .benefit-donate {
+    text-align: center;
+    padding: 30px 0;
+    &-title {
+      font-size: 36px;
+      line-height: 40px;
+    }
+    &-row {
+      column-gap: 72px;
+      row-gap: 72px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+    &-block {
+      width: 100%;
+
+      img {
+
+      }
+      h4 {
+
+      }
+      p {
+
+      }
+    }
+    button {
+
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .benefit-donate {
+    text-align: center;
+    padding: 30px 0;
+    &-title {
+      font-size: 36px;
+      line-height: 40px;
+    }
+    &-row {
+      column-gap: 72px;
+      row-gap: 72px;
+      grid-template-columns: repeat(1, minmax(0, 1fr));
+    }
+    &-block {
+      width: 100%;
+
+      img {
+
+      }
+      h4 {
+
+      }
+      p {
+
+      }
+    }
+    button {
+
     }
   }
 }

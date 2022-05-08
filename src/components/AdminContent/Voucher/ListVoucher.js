@@ -2,50 +2,44 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 
 const initialFormData = {
-    description: "",
-    category: "",
+    _id: "",
+    voucher_code: [],
+    description : "",
+    category : "",
     supplier_name: "",
     point_cost: "",
     image: "",
 };
 
 const ListVoucher = () => {
-    const [formData, setFormData] = useState(initialFormData);
+    const [data, setData] = useState(initialFormData);
     const [filters, setFilters] = useState({});
 
+    const token = window.localStorage.getItem("token");
+
     useEffect(() => {
-        (async () => {
-            try {
-                const res = await axios.get(
-                    "https://adventure-charity.herokuapp.com/api/voucher/list?page=1"
-                );
-                setFormData(res.data.vouchers);
-                console.log(formData);
-            } catch (error) {
-                console.log(error.message);
-            }
-        })();
+        const getListVouchers = async () => {
+          const res = await axios.get(
+            "http://adventure-charity.herokuapp.com/api/voucher/list?page=1"
+          );
+          setData(res.data.vouchers);
+        };
+        getListVouchers();
     }, []);
-    // const table         // formData.vouchers.reduce((oldTable, voucher) => {
-    //     oldTable += `
-    //         <tr>
-    //             <td>${voucher.description}</td>
-    //             <td>${voucher.category}</td>
-    //             <td>${voucher.supplier_name}</td>
-    //             <td>${voucher.point_cost}</td>
-    //             <td>
-    //                 <a className="btn btn-primary btn-sm" href="/admin/menus/edit/' . $menu->id . '">
-    //                     <i className="fas fa-edit"></i>
-    //                 </a>
-    //                 <a href="#" className="btn btn-danger btn-sm"
-    //                     onclick="removeRow(' . $menu->id . ', \'/admin/menus/destroy\')">
-    //                     <i className="fas fa-trash"></i>
-    //                 </a>
-    //             </td>
-    //         </tr>
-    //     `
-    // }, "")
-    // `a`;
+
+    async function removeVoucher(id) {
+        const deleteVoucher = async () => {
+            const res = await axios.delete(
+              `http://adventure-charity.herokuapp.com/api/voucher/delete/${id}`,
+              {
+                headers: {
+                  authorization: token,
+                },
+              }
+            );
+          };
+          deleteVoucher();
+    }
 
     return (
         <>
@@ -62,21 +56,30 @@ const ListVoucher = () => {
                         <th style={{ width: 100 }}>&nbsp;</th>
                     </tr>
                 </thead>
-                {formData.map((voucher) => {
-                    return (
-                        <tr>
-                            <td>{voucher.description}</td>
-                            <td>{voucher.category}</td>
-                            <td>{voucher.supplier_name}</td>
-                            <td>{voucher.point_cost}</td>
-                        </tr>
-                    );
-                })}
-                {/* <tbody>
-                    {
-                        table
+
+                <tbody>
+                    {   
+                        data.length ? (data.map((voucher) => (
+                            (
+                                <tr>
+                                    <td>{voucher.description}</td>
+                                    <td>{voucher.category}</td>
+                                    <td>{voucher.supplier_name}</td>
+                                    <td>{voucher.point_cost}</td>
+                                    <td>
+                                        <a className="btn btn-primary btn-sm" href={`/admin/voucher/edit/${voucher._id}`} >
+                                            <i className="fas fa-edit"></i>
+                                        </a>
+                                        <a href="#" className="btn btn-danger btn-sm"
+                                            onClick={() => removeVoucher(voucher._id)} key={voucher._id}>
+                                            <i className="fas fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            )
+                        ))) : <div></div>
                     }
-                </tbody> */}
+                </tbody>
             </table>
         </>
     );

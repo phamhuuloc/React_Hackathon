@@ -32,7 +32,7 @@ const HowWeWork = () => {
           <p>Hãy sống để sẻ chia</p>
         </div>
         <div className="how-we-work-img">
-          <img src={description_work} alt="" />
+          <img src={description_work} alt=""/>
         </div>
       </div>
     </>

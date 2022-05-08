@@ -1,17 +1,37 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import FileBase from 'react-file-base64';
+import { useParams } from "react-router-dom";
 
 const initialFormData = {
+    _id: "",
     description : "",
     category : "",
     supplier_name: "",
     point_cost: "",
     image: "",
 };
-
 const EditVoucher = () => {
     const [formData, setFormData] = useState(initialFormData);
+    const [data, setData] = useState(initialFormData);
+    const { id } = useParams();
+
+    const token = window.localStorage.getItem("token");
+
+    useEffect(() => {
+        const getVoucher = async () => {
+          const res = await axios.get(
+            `http://adventure-charity.herokuapp.com/api/voucher/edit/${id}`,
+            {
+                headers: {
+                  authorization: token,
+                },
+              }
+          );
+          setFormData((res.data.voucher))
+        };
+        getVoucher();
+    }, []);
 
     const handleOnChange = (e) => {
         const { name, value } = e.target;
@@ -32,9 +52,15 @@ const EditVoucher = () => {
 
     const handleOnSubmit = async (e) => {
 
-        e.preventDefault();
-    
-        axios.post("https://adventure-charity.herokuapp.com/api/voucher/edit", formData)
+        e.preventDefault(); 
+        axios.post(`https://adventure-charity.herokuapp.com/api/voucher/edit/${id}`, formData,
+        {
+            headers: {
+              authorization: token,
+            },
+          }
+        )
+
     };
 
     const getBase64OfImage = (base64) => (
@@ -43,15 +69,15 @@ const EditVoucher = () => {
 
   return (
     <>
-        <div class="card-header">
-            <h3 class="card-title">Thêm voucher</h3>
+        <div className="card-header">
+            <h3 className="card-title">Thêm voucher</h3>
         </div>
         <form onSubmit={handleOnSubmit}>
             <div className="card-body">
                 <div className="row">
                     <div className="col-md-6">
                         <div className="form-group">
-                            <label for="description">Mô tả</label>
+                            <label htmlFor="description">Mô tả</label>
                             <input type="text" name="description" className="form-control"  placeholder="Nhập mô tả" value={formData.description}
                             onChange={handleOnChange} required/>
                         </div>
@@ -75,7 +101,7 @@ const EditVoucher = () => {
                 <div className="row">
                 <div className="col-md-6">
                         <div className="form-group">
-                        <label for="supplier_name">Nhà tài trợ</label>
+                        <label htmlFor="supplier_name">Nhà tài trợ</label>
                             <input type="text" name="supplier_name" className="form-control"  placeholder="Nhập tên nhà tài trợ" value={formData.supplier_name}
                             onChange={handleOnChange} required/>
                         </div>
@@ -83,14 +109,14 @@ const EditVoucher = () => {
 
                     <div className="col-md-6">
                         <div className="form-group">
-                            <label for="point_cost">Số điểm</label>
+                            <label htmlFor="point_cost">Số điểm</label>
                             <input type="number" name="point_cost" className="form-control" value={formData.point_cost}
                             onChange={handleOnChange} required/>
                         </div>
                     </div>
                 </div>
 
-                <div class="form-group">
+                <div className="form-group">
                         <label >Ảnh voucher</label>
                         <FileBase
                             required

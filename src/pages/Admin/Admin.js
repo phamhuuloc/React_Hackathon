@@ -5,6 +5,7 @@ import ListVoucher from "../../components/AdminContent/Voucher/ListVoucher";
 import Navbar from "../../components/Navbar/Navbar";
 import SidebarAdmin from "../../components/SidebarAdmin/SidebarAdmin";
 import "./Admin.scss";
+import EditVoucher from "../../components/AdminContent/Voucher/EditVoucher.";
 
 const Admin = ({ route }) => {
     const body = (
@@ -12,6 +13,7 @@ const Admin = ({ route }) => {
             {route === "/admin/voucher/add" && <AddVoucher />}
             {route === "/admin/voucher/list" && <ListVoucher />}
             {route === "/admin/supplier/add" && <AddSupplier />}
+            {route === '/admin/voucher/edit') && <EditVoucher />}
         </>
     );
     return (
@@ -31,6 +33,7 @@ const Admin = ({ route }) => {
                             </a>
                         </li>
                     </ul>
+
 
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">
