@@ -11,7 +11,6 @@ const initialFormData = {
     image: "",
 };
 
-
 const ListVoucher = () => {
     const [data, setData] = useState(initialFormData);
     const [filters, setFilters] = useState({});
@@ -54,9 +53,10 @@ const ListVoucher = () => {
                         <th>Loại voucher</th>
                         <th>Nhà tài trợ</th>
                         <th>Số điểm</th>
-                        <th style={{width: 100}}>&nbsp;</th>
+                        <th style={{ width: 100 }}>&nbsp;</th>
                     </tr>
                 </thead>
+
                 <tbody>
                     {   
                         data.length ? (data.map((voucher) => (
@@ -82,6 +82,6 @@ const ListVoucher = () => {
                 </tbody>
             </table>
         </>
-    )
+    );
 };
 export default ListVoucher;
