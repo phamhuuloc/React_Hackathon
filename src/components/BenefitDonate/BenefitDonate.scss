@@ -1,8 +1,9 @@
 .benefit-donate {
   text-align: center;
   padding: 30px 0;
-  h1 {
-    color: tomato;
+  &-title {
+    color: #45945d;
+    font-weight: 700px;
     margin: 20px 0;
   }
   &-row {
@@ -11,13 +12,22 @@
     align-items: center;
   }
   &-block {
-    width: 389px;
-    padding: 0 30px;
+    width: 33%;
+    padding: 20px 30px;
+    border: 2px solid #45945d;
+    border-radius: 12px;
+    margin: 40px;
+    box-shadow: 10px 10px 8px 10px #888888;
     img {
       width: 389px;
       height: 174px;
       max-width: 100%;
       object-fit: cover;
+    }
+    h4 {
+      color: #45945d;
+      font-weight: 700px;
+      margin: 20px 0;
     }
     p {
       line-height: 1.8;
@@ -26,13 +36,12 @@
   }
   button {
     margin-top: 20px;
-    background: tomato;
+    background: #45945d;
     color: #fff;
     margin-right: 25px;
     width: 150px;
     height: 50px;
     display: inline-block;
-    font-family: "Poppins";
     font-weight: bold;
     font-size: 14px;
     padding: 10px;

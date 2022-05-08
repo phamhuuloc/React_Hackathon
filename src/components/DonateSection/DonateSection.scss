@@ -1,11 +1,14 @@
 .donate {
   &-anything {
-    margin-top: 20px;
-    // background-color: #f6f6f7;
-    color: tomato;
+    margin-top: 120px;
+    background-color: #45945d;
+    color: white;
+    &-title {
+      font-weight: 700;
+    }
   }
   &-anything {
-    padding: 30px 0;
+    padding: 80px 0;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -14,13 +17,19 @@
   &-row {
     display: flex;
   }
+
   &-type-block {
     // width: 890px;
-    padding: 0 57px;
+    padding: 32px 16px;
+    background-color: #ffffff;
     text-align: center;
+    border: 2px solid #45945d;
+    border-radius: 12px;
+    margin: 40px;
+    box-shadow: 5px 5px 5px 5px #1c1c1c;
     h6 {
-      color: #f15622;
-      font-size: 20px;
+      color: #45945d;
+      font-size: 40px;
       font-weight: 700;
       letter-spacing: 2px;
     }

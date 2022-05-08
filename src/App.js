@@ -6,6 +6,7 @@ import Donation from "./pages/Donation/Donation";
 import OurStory from "./pages/OurStory/OurStory";
 import Vouchers from "./pages/Vouchers/Vouchers";
 import HowWeWork from "./pages/HowWeWork/HowWeWork";
+import Admin from "./pages/Admin/Admin";
 function App() {
   return (
     <BrowserRouter>
@@ -17,6 +18,9 @@ function App() {
         <Route path="/story" element={<OurStory />} />
         <Route path="/vouchers" element={<Vouchers />} />
         <Route path="/work" element={<HowWeWork />} />
+        <Route path="/admin/voucher/add" element={<Admin route="/admin/voucher/add"/>} />
+        <Route path="/admin/voucher/list" element={<Admin route="/admin/voucher/list"/>} />
+        <Route path="/admin/supplier/add" element={<Admin route="/admin/supplier/add"/>} />
       </Routes>
     </BrowserRouter>
   );

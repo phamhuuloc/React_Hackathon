@@ -9,6 +9,7 @@ import { setUser } from "../../redux/reducer/userSlice";
 import "./Navbar.scss";
 import axios from "axios";
 const Navbar = () => {
+  const isUser = true;
   const navigate = useNavigate;
 
   let user = useSelector((state) => state.user.value);
