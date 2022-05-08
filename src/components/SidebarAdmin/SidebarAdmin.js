@@ -37,21 +37,21 @@ const SidebarAdmin = () => {
             <a href="#" className="nav-link">
               <i className="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                Danh mục
+                Voucher
                 <i className="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul className="nav nav-treeview">
               <li className="nav-item">
-                <a href="/admin/menu/add" className="nav-link">
+                <a href="/admin/voucher/add" className="nav-link">
                   <i className="far fa-circle nav-icon"></i>
-                  <p>Thêm danh mục</p>
+                  <p>Thêm voucher</p>
                 </a>
               </li>
               <li className="nav-item">
-                <a href="/admin/menu/list" className="nav-link">
+                <a href="/admin/voucher/list?page=1" className="nav-link">
                   <i className="far fa-circle nav-icon"></i>
-                  <p>Danh sách danh mục</p>
+                  <p>Danh sách voucher</p>
                 </a>
               </li>
             </ul>
@@ -61,21 +61,21 @@ const SidebarAdmin = () => {
             <a href="#" className="nav-link">
               <i className="nav-icon fas fa-images"></i>
               <p>
-                Slider
+                Nhà tài trợ
                 <i className="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul className="nav nav-treeview">
               <li className="nav-item">
-                <a href="/admin/slider/add" className="nav-link">
+                <a href="/admin/supplier/add" className="nav-link">
                   <i className="far fa-circle nav-icon"></i>
-                  <p>Thêm Slider</p>
+                  <p>Thêm nhà tài trợ</p>
                 </a>
               </li>
               <li className="nav-item">
-                <a href="/admin/slider/list" className="nav-link">
+                <a href="/admin/supplier/list?page=1" className="nav-link">
                   <i className="far fa-circle nav-icon"></i>
-                  <p>Danh sách Slider</p>
+                  <p>Danh sách nhà tài trợ</p>
                 </a>
               </li>
             </ul>

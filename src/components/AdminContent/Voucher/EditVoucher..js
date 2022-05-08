@@ -34,7 +34,7 @@ const EditVoucher = () => {
 
         e.preventDefault();
     
-        axios.post("https://adventure-charity.herokuapp.com/api/voucher/new", formData)
+        axios.post("https://adventure-charity.herokuapp.com/api/voucher/edit", formData)
     };
 
     const getBase64OfImage = (base64) => (
