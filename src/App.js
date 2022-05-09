@@ -14,7 +14,7 @@ import UserInfo from "./pages/UserInfo/UserInfo";
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
 import Donors from "./pages/Donors/Donors";
-
+import Certificate from "./pages/Certificate/Certificate";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -43,6 +43,7 @@ function App() {
         <Route path="/vouchers" element={<Vouchers />} />
         <Route path="/work" element={<HowWeWork />} />
         <Route path="/donors" element={<Donors />} />
+        <Route path="/certificate/:id" element={<Certificate />} />
         <Route
           path="/admin/voucher/edit/:id"
           element={<Admin route="/admin/voucher/edit" />}

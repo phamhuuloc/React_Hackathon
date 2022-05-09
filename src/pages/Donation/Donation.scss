@@ -1,5 +1,9 @@
 .donation {
   height: 100vh;
+  a {
+    color: white;
+    padding: 10px;
+  }
   &-type {
     box-sizing: border-box;
     padding: 14px 20px;
@@ -109,8 +113,28 @@
       cursor: pointer;
       text-transform: uppercase;
       border-radius: 3px;
+      transition: all 0.2s ease-in-out;
       &:hover {
         background-color: #337747;
+      }
+      &-share {
+        color: #fff;
+        margin-right: 25px;
+        width: 164px;
+        height: 50px;
+        display: inline-block;
+        font-family: "Poppins";
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        border-radius: 3px;
+        transition: all 0.2s ease-in-out;
+        &:hover {
+          background-color: #337747;
+        }
       }
     }
     &-reset {

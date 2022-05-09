@@ -32,7 +32,7 @@ const Donors = () => {
                 <span>Email: loc281202@gmail.com</span>
               </div>
               <div className="donors-mentor-member">
-                <strong>Nguyễn Minh Khang</strong>{" "}
+                <strong>Nguyễn Văn Khang</strong>{" "}
                 <span>Email: khang@gmail.com</span>
               </div>
               <div className="donors-mentor-member">

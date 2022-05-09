@@ -117,7 +117,7 @@ const Navbar = () => {
                     </Link>
                   </li>
                   <li>
-                    <Link to="/userinfo">Thông tin cá nhân</Link>
+                    <Link to="/user">Thông tin cá nhân</Link>
                   </li>
                   {userData.user.role === "admin" ? (
                     <li>

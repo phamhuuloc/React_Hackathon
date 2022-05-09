@@ -27,7 +27,7 @@ export const menuItem = {
     },
     {
       id: 6,
-      textOption: "Dồ  chơi",
+      textOption: "Đồ chơi",
       value: "dochoi",
     },
   ],
