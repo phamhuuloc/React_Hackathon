@@ -1,20 +1,22 @@
 import { Link, NavLink } from "react-router-dom";
 import { useEffect } from "react";
-import "./Sidebar.scss";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { setCategory } from "../../redux/reducer/voucherSlice";
 import { useState } from "react";
 import axios from "axios";
+import { menuItem } from "./menuItem";
+import "./Sidebar.scss";
+
 const Sidebar = () => {
   const token = window.localStorage.getItem("token");
   const dispatch = useDispatch();
   const [data, setData] = useState();
-  const [categoryVoucher, setCategoryVoucher] = useState("tatca");
-
+  const [categoryVoucher, setCategoryVoucher] = useState();
   let user = useSelector((state) => state.user.value);
   dispatch(setCategory(data));
-  console.log(categoryVoucher);
+
+  // handle envent when sidebar button clicked
   const getListVouchers = async (categoryVoucher) => {
     if (categoryVoucher === "tatca") {
       const res = await axios.get(
@@ -23,13 +25,18 @@ const Sidebar = () => {
       setData(res.data.vouchers);
     } else {
       const res = await axios.get(
-        ` https://adventure-charity.herokuapp.com/api/voucher/category/${categoryVoucher}`
+        `https://adventure-charity.herokuapp.com/api/voucher/category/${categoryVoucher}`
       );
       setData(res.data.vouchers);
     }
   };
-
+  // update state category  on redux store
   dispatch(setCategory(data));
+  const [activeItem, setActiveItem] = useState(0);
+  const handleClick = (id) => {
+    setActiveItem(id);
+  };
+
   return (
     <div className="sidebar-panel col-2">
       <div className="sidebar-panel-avatar">
@@ -49,45 +56,20 @@ const Sidebar = () => {
         )}
         <div className="sidebar-panel-voucher-tags">
           <ul className="sidebar-panel-voucher-nav">
-            <li>Tất cả </li>
-            <li
-              onClick={() => {
-                // setCategoryVoucher("mypham");
-                getListVouchers("mypham");
-              }}
-            >
-              Mỹ phầm{" "}
-            </li>
-            <li
-              onClick={() => {
-                // setCategoryVoucher("anuong");
-                getListVouchers("anuong");
-              }}
-            >
-              Ăn uống
-            </li>
-            <li
-              onClick={() => {
-                // setCategoryVoucher("quanao");
-                getListVouchers("quanao");
-              }}
-            >
-              Quần áo
-            </li>
-            <li
-              onClick={() => {
-                getListVouchers("thethao");
-              }}
-            >
-              Thể thao
-            </li>
-            <li
-              onClick={() => {
-                getListVouchers("dochoi");
-              }}
-            >
-              Đồ chơi{" "}
-            </li>
+            {menuItem.options.map((item) => {
+              return (
+                <li
+                  className={item.id === activeItem ? "active" : " "}
+                  onClick={() => {
+                    // setCategoryVoucher("mypham");
+                    handleClick(item.id);
+                    getListVouchers(item.value);
+                  }}
+                >
+                  {item.textOption}
+                </li>
+              );
+            })}
           </ul>
         </div>
       </div>

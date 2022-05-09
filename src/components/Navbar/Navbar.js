@@ -63,7 +63,6 @@ const Navbar = () => {
   const handleToggle = () => {
     setNavbarOpen(!navbarOpen);
   };
-  console.log(userData);
   return (
     <div className="navbar">
       <div className="navbar-container">
@@ -96,14 +95,12 @@ const Navbar = () => {
           </li>
           <li className="navbar-menu-item">
             <Link to="/donors">Nhà tài trợ</Link>
-            <ul className="navbar-submenu">
-              <li>
-                <Link to="introduceDonors">Giới thiệu</Link>
-              </li>
-              <li>
-                <Link to="joinDonors">Tham gia tài trợ</Link>
-              </li>
-            </ul>
+            {/* <ul className="navbar-submenu"> */}
+            {/*   <li> */}
+            {/*     <Link to="/donors">Giới thiệu</Link> */}
+            {/*   </li> */}
+            {/*   <li></li> */}
+            {/* </ul> */}
           </li>
         </ul>
         <ul className="navbar-menu-icons">

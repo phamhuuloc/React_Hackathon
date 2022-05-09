@@ -10,14 +10,27 @@ import { useSelector } from "react-redux";
 
 const Vouchers = () => {
   const [modalOpen, setModalOpen] = useState(false);
-
   const [dataVoucher, setDataVoucher] = useState({});
+  const [data, setData] = useState();
   const token = window.localStorage.getItem("token");
   const navigate = useNavigate();
 
-  let data = useSelector((state) => state.category.value);
-  console.log(data);
-
+  // get vouchers list
+  let category = useSelector((state) => state.category.value);
+  useEffect(() => {
+    const getFirstData = async () => {
+      if (category.length > 0) {
+        setData(category);
+      } else {
+        let res = await axios.get(
+          "https://adventure-charity.herokuapp.com/api/voucher/list?page=1"
+        );
+        setData(res.data.vouchers);
+      }
+    };
+    getFirstData();
+  }, [category]);
+  //  change yuour point to gt voucher
   const getVoucher = async (id) => {
     try {
       let idVoucher = { voucher_id: id };
@@ -45,6 +58,7 @@ const Vouchers = () => {
     let voucherInfo = data.find((item) => item._id === voucher._id);
     setDataVoucher(voucherInfo);
   };
+
   return (
     <>
       <Navbar />

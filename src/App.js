@@ -13,6 +13,7 @@ import MyVouchers from "./pages/MyVouchers/MyVouchers";
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getAnalytics } from "firebase/analytics";
+import Donors from "./pages/Donors/Donors";
 // TODO: Add SDKs for Firebase products that you want to use
 // https://firebase.google.com/docs/web/setup#available-libraries
 
@@ -42,7 +43,7 @@ function App() {
         <Route path="/story" element={<OurStory />} />
         <Route path="/vouchers" element={<Vouchers />} />
         <Route path="/work" element={<HowWeWork />} />
-
+        <Route path="/donors" element={<Donors />} />
         <Route
           path="/admin/voucher/edit/:id"
           element={<Admin route="/admin/voucher/edit" />}
