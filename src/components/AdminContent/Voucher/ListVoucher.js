@@ -17,6 +17,8 @@ const ListVoucher = () => {
 
     const token = window.localStorage.getItem("token");
 
+    
+
     useEffect(() => {
         const getListVouchers = async () => {
           const res = await axios.get(
@@ -41,6 +43,25 @@ const ListVoucher = () => {
           deleteVoucher();
     }
 
+    async function addCode(id) {
+        const value = document.getElementById(id).value;
+        const formReq = {
+            voucherCode: value,
+            voucherId: id
+        }
+        const addCode = async () => {
+            const res = await axios.post(
+              `http://adventure-charity.herokuapp.com/api/voucher/newcode/`, formReq,
+              {
+                headers: {
+                  authorization: token,
+                },
+              }
+            );
+          };
+          addCode();
+    }
+
     return (
         <>
             <div className="card-header">
@@ -53,6 +74,7 @@ const ListVoucher = () => {
                         <th>Loại voucher</th>
                         <th>Nhà tài trợ</th>
                         <th>Số điểm</th>
+                        <th>Thêm mã voucher</th>
                         <th style={{ width: 100 }}>&nbsp;</th>
                     </tr>
                 </thead>
@@ -67,6 +89,22 @@ const ListVoucher = () => {
                                     <td>{voucher.supplier_name}</td>
                                     <td>{voucher.point_cost}</td>
                                     <td>
+                                        <input
+                                            id={voucher._id}
+                                            type="text"
+                                            name="code"
+                                            className="form-control"
+                                            placeholder="Nhập mô tả"
+                                            required
+                                        >
+                                            
+                                        </input>
+                                        <a className="btn btn-primary btn-sm" onClick={() => addCode(voucher._id)}>
+                                            <i className="fas fa-plus"></i>
+                                        </a>
+                                    </td>
+                                    <td>
+                                        
                                         <a className="btn btn-primary btn-sm" href={`/admin/voucher/edit/${voucher._id}`} >
                                             <i className="fas fa-edit"></i>
                                         </a>

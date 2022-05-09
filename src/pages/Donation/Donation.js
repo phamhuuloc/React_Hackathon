@@ -4,9 +4,13 @@ import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
 import "./Donation.scss";
 import { useNavigate } from "react-router-dom";
+import { isFulfilled } from "@reduxjs/toolkit";
+
+
 const Donation = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const [certificate, setCertificate] = useState("");
   const [data, setData] = useState({
     typeDonation: "",
     cartId: "",
@@ -25,9 +29,13 @@ const Donation = () => {
       address: "",
     });
   };
+
+
+
   const handeSelected = (e) => {
     setData({ ...data, typeDonation: e.target.value });
   };
+  
   const token = window.localStorage.getItem("token");
   const donation = async (e) => {
     try {
@@ -48,6 +56,7 @@ const Donation = () => {
             },
           }
         );
+        setCertificate(res.data.certificate)
         alert(res.data.message);
       }
       setData({
@@ -199,6 +208,9 @@ const Donation = () => {
                 RESET
               </button>
             </div>
+            <embed src={`data:application/pdf;base64,${certificate}`} 
+ type="application/pdf" width="700px" height="1500px"></embed>
+
           </div>
         </div>
       </div>

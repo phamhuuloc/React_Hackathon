@@ -10,6 +10,7 @@ import Admin from "./pages/Admin/Admin";
 import "./__global.scss"
 import History from "./pages/History/History";
 import MyVouchers from "./pages/MyVouchers/MyVouchers";
+import UserInfo from "./pages/UserInfo/UserInfo";
 
 function App() {
   return (
@@ -28,6 +29,7 @@ function App() {
 
 
         <Route path="/history" element={<History />} />
+        <Route path="/user" element={<UserInfo />} />
         <Route path="/myvoucher" element={<MyVouchers />} />
         <Route
           path="/admin/voucher/add"

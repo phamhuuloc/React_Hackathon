@@ -28,6 +28,7 @@ const Vouchers = () => {
       setData(res.data.vouchers);
     };
     getListVouchers();
+    
   }, []);
   const getVoucher = async (id) => {
     try {
