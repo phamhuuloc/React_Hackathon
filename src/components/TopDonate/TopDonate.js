@@ -9,37 +9,27 @@ const initialFormData = {
 };
 
 const TopDonate = () => {
-  const [formData, setFormData] = useState(initialFormData);
+  const [topDonate, setTopDonate] = useState(initialFormData);
   const [listCurrentTop, setListCurrentTop] = useState(
-    formData.topDonationsMonth
+    topDonate.topDonationsMonth
   );
-  const token = window.localStorage.getItem("token");
   const [showTopMonth, setShowTopMonth] = useState(true);
-  useEffect(() => {
-    const checkLoggedIn = async () => {
-      let token = localStorage.getItem("token");
-      if (token === null) {
-        localStorage.setItem("token", "");
-        token = "";
-      }
-      if (token) {
-        const topDonationList = await axios.get(
-          "https://adventure-charity.herokuapp.com/api/donation/list/top",
-          {
-            headers: {
-              authorization: token,
-            },
-          }
-        );
-        setFormData({
-          topDonationsMonth: topDonationList.data.topDonationsMonth,
-          topDonationsYear: topDonationList.data.topDonationsYear,
-        });
-        setListCurrentTop(topDonationList.data.topDonationsMonth);
-      }
-    };
 
-    checkLoggedIn();
+  useEffect(() => {
+    const getListTopDonate = async () => {
+      const topDonationList = await axios.get(
+        "https://adventure-charity.herokuapp.com/api/donation/list/top"
+      );
+      console.log(topDonationList);
+
+      setTopDonate({
+        topDonationsMonth: topDonationList.data.topDonationsMonth,
+        topDonationsYear: topDonationList.data.topDonationsYear,
+      });
+
+      setListCurrentTop(topDonationList.data.topDonationsMonth);
+    };
+    getListTopDonate();
   }, []);
   return (
     <>
@@ -50,7 +40,7 @@ const TopDonate = () => {
         <div className="card-header-button">
           <button
             onClick={() => {
-              setListCurrentTop(formData.topDonationsMonth);
+              setListCurrentTop(topDonate.topDonationsMonth);
               setShowTopMonth(true);
             }}
             className={showTopMonth ? "active" : ""}
@@ -59,7 +49,7 @@ const TopDonate = () => {
           </button>
           <button
             onClick={() => {
-              setListCurrentTop(formData.topDonationsYear);
+              setListCurrentTop(topDonate.topDonationsYear);
               setShowTopMonth(false);
             }}
             className={showTopMonth ? "" : "active"}
@@ -76,8 +66,8 @@ const TopDonate = () => {
             <th>Số điểm</th>
           </tr>
         </thead>
-        {formData.topDonationsMonth.length > 0 ? (
-          formData.topDonationsMonth.map((item) => {
+        {topDonate.topDonationsMonth.length > 0 ? (
+          topDonate.topDonationsMonth.map((item) => {
             return (
               <tr>
                 <td>{item.user.fullname}</td>
