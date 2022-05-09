@@ -32,7 +32,7 @@ const Register = () => {
         cmnd: data.idProof,
       };
       const res = await axios.post(
-        "http://adventure-charity.herokuapp.com/api/auth/register",
+        "https://adventure-charity.herokuapp.com/api/auth/register",
         data_1
       );
       console.log(res);
@@ -127,7 +127,7 @@ const Register = () => {
               className="signup-form-submit"
               onClick={() => handleButtonLogin()}
             >
-              Login
+              Đăng Nhập
             </button>
           </div>
           <div className="signup-form-row">
@@ -240,13 +240,13 @@ const Register = () => {
               className="signup-form-submit"
               onClick={(e) => resgister(e)}
             >
-              SUBMIT
+              Xác Nhận
             </button>
             <button
               className="signup-form-reset"
               onClick={() => handleResetButton()}
             >
-              RESET
+              Làm Mới
             </button>
           </div>
         </div>

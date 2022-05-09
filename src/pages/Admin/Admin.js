@@ -13,7 +13,7 @@ const Admin = ({ route }) => {
             {route === "/admin/voucher/add" && <AddVoucher />}
             {route === "/admin/voucher/list" && <ListVoucher />}
             {route === "/admin/supplier/add" && <AddSupplier />}
-            {route === '/admin/voucher/edit' && <EditVoucher />}
+            {route === "/admin/voucher/edit" && <EditVoucher />}
         </>
     );
     return (
@@ -33,7 +33,6 @@ const Admin = ({ route }) => {
                             </a>
                         </li>
                     </ul>
-
 
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-item">

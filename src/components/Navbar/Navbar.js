@@ -9,7 +9,7 @@ import { setUser } from "../../redux/reducer/userSlice";
 import "./Navbar.scss";
 import axios from "axios";
 const Navbar = () => {
-  const [navbarOpen, setNavbarOpen] = useState(false)
+  const [navbarOpen, setNavbarOpen] = useState(false);
 
   const navigate = useNavigate;
 
@@ -27,7 +27,7 @@ const Navbar = () => {
   let token = window.localStorage.getItem("token");
   // useEffect and the context API to check if a user i logged in and protect a
   // route
-  
+
   //
   const [userData, setUserData] = useState({
     token: "",
@@ -42,7 +42,7 @@ const Navbar = () => {
       }
       if (token) {
         const userResponse = await axios.get(
-          "http://adventure-charity.herokuapp.com/api/user",
+          "https://adventure-charity.herokuapp.com/api/user",
           {
             headers: {
               authorization: token,
@@ -61,9 +61,8 @@ const Navbar = () => {
   }, []);
 
   const handleToggle = () => {
-    setNavbarOpen(!navbarOpen)
-  }
-
+    setNavbarOpen(!navbarOpen);
+  };
   return (
     <div className="navbar">
       <div className="navbar-container">
@@ -72,7 +71,7 @@ const Navbar = () => {
         </Link>
         <ul className={`navbar-menu ${navbarOpen ? "is-show" : ""}`}>
           <span className="closeToggle" onClick={handleToggle}>
-            <i className='fa fa-times'></i>          
+            <i className="fa fa-times"></i>
           </span>
           <li className="navbar-menu-item">
             <Link to="/story">Giới thiệu</Link>
@@ -96,14 +95,12 @@ const Navbar = () => {
           </li>
           <li className="navbar-menu-item">
             <Link to="/donors">Nhà tài trợ</Link>
-            <ul className="navbar-submenu">
-              <li>
-                <Link to="introduceDonors">Giới thiệu</Link>
-              </li>
-              <li>
-                <Link to="joinDonors">Tham gia tài trợ</Link>
-              </li>
-            </ul>
+            {/* <ul className="navbar-submenu"> */}
+            {/*   <li> */}
+            {/*     <Link to="/donors">Giới thiệu</Link> */}
+            {/*   </li> */}
+            {/*   <li></li> */}
+            {/* </ul> */}
           </li>
         </ul>
         <ul className="navbar-menu-icons">
@@ -122,9 +119,13 @@ const Navbar = () => {
                   <li>
                     <Link to="/userinfo">Thông tin cá nhân</Link>
                   </li>
-                  <li>
-                    <Link to="/admin/voucher/add">Trang admin</Link>
-                  </li>
+                  {userData.user.role === "admin" ? (
+                    <li>
+                      <Link to="/admin/voucher/add">Trang admin</Link>
+                    </li>
+                  ) : (
+                    <div></div>
+                  )}
                 </ul>
               </li>
               <li className="navbar-menu-icon-score">
@@ -151,7 +152,7 @@ const Navbar = () => {
             </>
           )}
           <span className="openToggle" onClick={handleToggle}>
-            <i className='fa fa-bars'></i>          
+            <i className="fa fa-bars"></i>
           </span>
         </ul>
       </div>

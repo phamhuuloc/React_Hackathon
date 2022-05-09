@@ -48,7 +48,7 @@ const Donation = () => {
       };
       if (token) {
         const res = await axios.post(
-          "http://adventure-charity.herokuapp.com/api/user/donation",
+          "https://adventure-charity.herokuapp.com/api/user/donation",
           data_1,
           {
             headers: {
@@ -116,6 +116,7 @@ const Donation = () => {
                       name="cartId"
                       id="cartId"
                       className="cartId"
+                      min="0"
                       value={data.cartId}
                       onChange={(e) =>
                         setData({ ...data, cartId: e.target.value })
@@ -199,13 +200,13 @@ const Donation = () => {
                 className="donation-form-submit"
                 onClick={() => donation()}
               >
-                SUBMIT
+                Gửi
               </button>
               <button
                 className="donation-form-reset"
                 onClick={(e) => handleResetButton(e)}
               >
-                RESET
+                Làm Mới
               </button>
             </div>
             <embed src={`data:application/pdf;base64,${certificate}`} 

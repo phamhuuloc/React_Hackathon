@@ -28,6 +28,9 @@
       text-shadow: rgb(0 0 0 / 75%) 1px 1px 2px;
     }
     button {
+      a {
+        color: white;
+      }
       background: #45945d;
       color: #fff;
       margin-top: 40px;
@@ -53,15 +56,11 @@
 }
 
 @media screen and (max-width: 1360px) {
-
 }
 
 @media screen and (max-width: 820px) {
   .hero-section {
-    
     &-container {
-      
-  
       h1 {
         font-size: 36px;
         line-height: 40px;
@@ -81,17 +80,13 @@
       }
     }
     img {
-      
     }
   }
 }
 
 @media screen and (max-width: 620px) {
   .hero-section {
-    
     &-container {
-      
-  
       h1 {
         font-size: 24px;
         line-height: 28px;
@@ -109,7 +104,6 @@
       }
     }
     img {
-      
     }
   }
 }

@@ -47,17 +47,15 @@
         display: block;
         padding: 10px 15px;
         cursor: pointer;
-        &:hover {
-          background-color: #eee;
-        }
-      }
-      li:first-child {
-        background-color: #f2540c;
-        a {
-          color: #fff;
-        }
+        transition: all 0.2s linear;
       }
     }
+  }
+}
+.active {
+  background-color: #f2540c;
+  a {
+    color: #fff;
   }
 }
 .col-2 {

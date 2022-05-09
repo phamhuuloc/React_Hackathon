@@ -17,7 +17,7 @@ const History = () => {
             }
             if (token) {
                 const userResponse = await axios.get(
-                    "http://adventure-charity.herokuapp.com/api/user/donation",
+                    "https://adventure-charity.herokuapp.com/api/user/donation",
                     {
                         headers: {
                             authorization: token,
@@ -40,7 +40,7 @@ const History = () => {
             <table className="table">
                 <thead>
                     <tr>
-                        <th>Loai</th>
+                        <th>Loại</th>
                         <th>Số lượng</th>
                         <th>Ngày</th>
                         <th>Số điểm</th>

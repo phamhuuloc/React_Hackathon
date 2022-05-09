@@ -17,7 +17,7 @@ const AddVoucher = () => {
         try {
             if (token) {
                 const res = await axios.post(
-                    "http://adventure-charity.herokuapp.com/api/voucher/new",
+                    "https://adventure-charity.herokuapp.com/api/voucher/new",
                     data,
                     {
                         headers: {
