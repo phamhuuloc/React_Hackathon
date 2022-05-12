@@ -3,7 +3,7 @@ import { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
 import "./Donation.scss";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { isFulfilled } from "@reduxjs/toolkit";
 import ShareLink from 'react-facebook-share-link';
 
@@ -12,6 +12,7 @@ const Donation = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
   const [certificate, setCertificate] = useState("");
+  const [certificateId, setCertificateId] = useState("");
   const [data, setData] = useState({
     typeDonation: "",
     cartId: "",
@@ -31,12 +32,10 @@ const Donation = () => {
     });
   };
 
-
-
   const handeSelected = (e) => {
     setData({ ...data, typeDonation: e.target.value });
   };
-  
+
   const token = window.localStorage.getItem("token");
   const donation = async (e) => {
     try {
@@ -57,7 +56,11 @@ const Donation = () => {
             },
           }
         );
-        setCertificate(res.data.certificate)
+        setCertificateId(res.data.certificateId);
+        setCertificate(res.data.certificate);
+
+        console.log(certificate);
+
         alert(res.data.message);
       }
       setData({
@@ -83,7 +86,26 @@ const Donation = () => {
           <div className="donation-form">
             <div className="donation-form-heading">
               <h1 className="donation-form-title">Quyên góp</h1>
-              <button className="donation-form-submit">Tham gia tài trợ</button>
+              <div className="donation-form-wrapper">
+                <button className="donation-form-submit">
+                  <Link to="/donors">Tham gia tài trợ</Link>
+                </button>
+                {certificate ? (
+                  <button className="donation-form-submit-share">
+                    <ShareLink
+                      link={`${certificate}`}
+                    >
+                      {(link) => (
+                        <a href={link} target="_blank" rel="noreferrer">
+                          Chia sẻ
+                        </a>
+                      )}
+                    </ShareLink>
+                  </button>
+                ) : (
+                  <div></div>
+                )}
+              </div>
             </div>
             <div className="donation-form-row">
               <div className="donation-form-group">
@@ -197,11 +219,13 @@ const Donation = () => {
               </div>
             </div>
             <div className="donation-form-button">
-              <button
-                className="donation-form-submit"
-                onClick={() => donation()}
-              >
-                Gửi
+              <button className="donation-form-submit">
+                <Link
+                  to={token === "" || token === null ? "/login" : " "}
+                  onClick={() => donation()}
+                >
+                  Gửi
+                </Link>
               </button>
               <button
                 className="donation-form-reset"
@@ -211,11 +235,6 @@ const Donation = () => {
               </button>
             </div>
             <img src={`${certificate}`} width="885px" height="626px"></img>      
-            <ShareLink link={`${certificate}`} >
-              {link => (
-                  <a href={link} target='_blank'>Share this on Facebook</a>
-              )}
-            </ShareLink>
           </div>
 
         </div>

@@ -1,12 +1,19 @@
-.card {
+@import "../../Responsive.scss";
+.list-donors {
   &-title {
     font-size: 30px;
     margin: 20px 0;
+    @include small-tablet {
+      font-size: 26px;
+    }
+    @include mobile {
+      font-size: 18px;
+    }
   }
   &-header {
     display: flex;
     align-items: center;
-    justify-content: flex-end;
+    justify-content: flex-start;
     padding: 0;
     &-button {
       display: flex;

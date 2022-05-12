@@ -6,10 +6,13 @@ import img_block_4 from "../../img/block_4.png";
 import img_block_5 from "../../img/block_5.png";
 import img_block_6 from "../../img/block_6.png";
 import "./BenefitDonate.scss";
+import { Link } from "react-router-dom";
 const BenefitDonate = () => {
   return (
     <div className="benefit-donate">
-      <h1 className="benefit-donate-title">Tại sao các nhà tài trợ nên tham gia tài trợ</h1>
+      <h1 className="benefit-donate-title">
+        Tại sao các nhà tài trợ nên tham gia tài trợ
+      </h1>
       <div className="benefit-donate-row">
         <div className="benefit-donate-block">
           <img src={img_block_1} alt="" />
@@ -63,7 +66,9 @@ const BenefitDonate = () => {
           </p>
         </div>
       </div>
-      <button>Tham gia tài trợ</button>
+      <button>
+        <Link to="/donors">Tham gia tài trợ</Link>
+      </button>
     </div>
   );
 };

@@ -20,6 +20,8 @@ const Donors = () => {
             Xin cảm ơn những nhà tài trợ dưới đây đã chia sẻ, tham gia cùng với
             chúng tôi:
           </p>
+
+          <ListDonors />
           <div>
             <h2>Cam On Vi Da Den</h2>
             {/* <h3>Thành viên nhóm</h3> */}
@@ -32,7 +34,7 @@ const Donors = () => {
                 <span>Email: loc281202@gmail.com</span>
               </div>
               <div className="donors-mentor-member">
-                <strong>Nguyễn Minh Khang</strong>{" "}
+                <strong>Nguyễn Văn Khang</strong>{" "}
                 <span>Email: khang@gmail.com</span>
               </div>
               <div className="donors-mentor-member">
@@ -49,7 +51,6 @@ const Donors = () => {
               </div>
             </div>
           </div>
-          <ListDonors />
         </div>
       </div>
     </>

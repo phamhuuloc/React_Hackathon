@@ -1,3 +1,4 @@
+@import "../../Responsive.scss";
 .modal {
   &-img {
     align-items: center;
@@ -12,8 +13,6 @@
     }
   }
   &-background {
-    // width: 100vw;
-    // height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
     background-color: rgba(200, 200, 200, 0.6);
@@ -39,6 +38,16 @@
     position: relative;
     top: 40%;
     padding: 25px 0;
+    @include tablet {
+      top: 20%;
+    }
+    @include small-tablet {
+      top: 20%;
+      padding-top: 20px;
+      width: 100%;
+      border-radius: 0;
+      inset: 0;
+    }
   }
 
   &-title {
@@ -76,6 +85,7 @@
     p {
       margin: 4px;
       font-size: 20px;
+      line-height: 1.5;
     }
   }
 

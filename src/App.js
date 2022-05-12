@@ -15,6 +15,7 @@ import Donors from "./pages/Donors/Donors";
 import Recharge from "./pages/Recharge/Recharge";
 import DonePayment from "./pages/DonePayment/DonePayment";
 
+import Certificate from "./pages/Certificate/Certificate";
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -42,11 +43,11 @@ function App() {
         <Route path="/vouchers" element={<Vouchers />} />
         <Route path="/work" element={<HowWeWork />} />
         <Route path="/donors" element={<Donors />} />
+        <Route path="/certificate/:id" element={<Certificate />} />
         <Route
           path="/admin/voucher/edit/:id"
           element={<Admin route="/admin/voucher/edit" />}
         />
-
         <Route path="/history" element={<History />} />
         <Route path="/user" element={<UserInfo />} />
         <Route path="/recharge" element={<Recharge />} />

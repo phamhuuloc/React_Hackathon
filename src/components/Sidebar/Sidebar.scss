@@ -1,5 +1,14 @@
+@import "../../Responsive.scss";
 .sidebar-panel {
   background-color: #f1f1f1;
+  display: flex;
+  flex-direction: column;
+  @include small-tablet {
+    width: 100%;
+  }
+  @include mobile {
+    display: block;
+  }
   &-avatar {
   }
   &--login {

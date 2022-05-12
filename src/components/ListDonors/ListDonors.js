@@ -21,8 +21,8 @@ const ListDonors = () => {
   console.log(formData);
   return (
     <>
-      <div className="card-header">
-        <h3 className="card-title">Danh Sách Nhà Tài Trợ</h3>
+      <div className="list-donors-header">
+        <h3 className="list-donors-title">Danh Sách Nhà Tài Trợ</h3>
         {/* <div className="card-header-button"></div> */}
       </div>
       <table className="table">

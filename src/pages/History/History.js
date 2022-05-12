@@ -34,8 +34,8 @@ const History = () => {
     return (
         <>
             <Navbar />
-            <div className="card-header">
-                <h3 className="card-title">Lịch sử quyên góp</h3>
+            <div className="history-donation-header">
+                <h3 className="history-donation-title">Lịch sử quyên góp</h3>
             </div>
             <table className="table">
                 <thead>
@@ -47,7 +47,7 @@ const History = () => {
                     </tr>
                 </thead>
                 {formData.length > 0 ? (
-                    formData.map((item) => {
+                    formData.reverse().map((item) => {
                         return (
                             <tr>
                                 <td>

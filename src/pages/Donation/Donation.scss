@@ -1,5 +1,18 @@
+@import "../../Responsive.scss";
 .donation {
   height: 100vh;
+  a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    width: 150px;
+    height: 30px;
+    @include mobile {
+      width: 140px;
+      height: 20px;
+    }
+  }
   &-type {
     box-sizing: border-box;
     padding: 14px 20px;
@@ -39,27 +52,72 @@
   }
   &-form {
     // padding: 93px 115px 90px 80px;
-    padding: 40px 80px;
+    padding: 40px 48px;
     margin-bottom: -8px;
     width: 100%;
+    &-wrapper {
+      display: flex;
+      justify-content: flex-end;
+    }
+    @include tablet {
+      padding: 26px 41px;
+    }
+    @include small-tablet {
+      padding: 18px 30px;
+    }
+    @include mobile {
+      padding: 10px 18px;
+    }
+
     &-heading {
       display: flex;
       align-items: center;
       justify-content: space-between;
+      margin-bottom: 28px;
+      @include mobile {
+        flex-direction: column;
+        align-items: flex-start;
+      }
       button {
         background-color: tomato;
       }
     }
     &-title {
       color: #55c48f;
-      margin-bottom: 30px;
+      @include small-tablet {
+        font-size: 26px;
+      }
+      @include mobile {
+        font-size: 28px;
+      }
     }
     &-row {
       display: flex;
+      @include tablet {
+        flex-direction: column;
+      }
+      @include small-tablet {
+        flex-direction: column;
+      }
+      @include mobile {
+        flex-direction: column;
+      }
     }
     &-group {
       width: 50%;
       padding: 0 30px;
+      @include tablet {
+        width: 100%;
+        padding: 0;
+      }
+      @include small-tablet {
+        width: 100%;
+        padding: 0;
+      }
+      @include mobile {
+        width: 100%;
+        padding: 0;
+      }
     }
     &-error {
       color: tomato;
@@ -75,6 +133,9 @@
         text-transform: uppercase;
         margin-bottom: 7px;
         font-size: 14px;
+        @include mobile {
+          font-size: 12px;
+        }
       }
       input {
         box-sizing: border-box;
@@ -92,14 +153,21 @@
     &-button {
       width: 100%;
       text-align: right;
-      margin-top: 50px;
+      margin: 30px 0;
+      @include tablet {
+        margin: 30px 0;
+      }
+      @include small-tablet {
+        margin: 30px 0;
+      }
+      @include mobile {
+        display: flex;
+      }
     }
     &-submit {
       background: #329e5e;
       color: #fff;
       margin-right: 25px;
-      width: 164px;
-      height: 50px;
       display: inline-block;
       font-family: "Poppins";
       font-weight: bold;
@@ -109,8 +177,47 @@
       cursor: pointer;
       text-transform: uppercase;
       border-radius: 3px;
+      transition: all 0.2s ease-in-out;
+      @include tablet {
+        padding: 8px;
+      }
+      @include small-tablet {
+        padding: 8px;
+      }
+      @include mobile {
+        margin-right: 10px;
+      }
+
+      &-donors {
+        a {
+          display: block;
+          width: 164px;
+          height: 50px;
+          padding: 10px 5px;
+        }
+      }
       &:hover {
         background-color: #337747;
+      }
+      &-share {
+        color: #fff;
+        // margin-right: 25px;
+        width: 164px;
+        height: 50px;
+        display: inline-block;
+        font-family: "Poppins";
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        border-radius: 3px;
+        transition: all 0.2s ease-in-out;
+
+        &:hover {
+          background-color: #337747;
+        }
       }
     }
     &-reset {
