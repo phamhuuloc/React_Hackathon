@@ -5,6 +5,7 @@ import axios from "axios";
 import "./Donation.scss";
 import { useNavigate } from "react-router-dom";
 import { isFulfilled } from "@reduxjs/toolkit";
+import ShareLink from 'react-facebook-share-link';
 
 
 const Donation = () => {
@@ -209,10 +210,14 @@ const Donation = () => {
                 Làm Mới
               </button>
             </div>
-            <embed src={`data:application/pdf;base64,${certificate}`} 
- type="application/pdf" width="700px" height="1500px"></embed>
-
+            <img src={`${certificate}`} width="885px" height="626px"></img>      
+            <ShareLink link={`${certificate}`} >
+              {link => (
+                  <a href={link} target='_blank'>Share this on Facebook</a>
+              )}
+            </ShareLink>
           </div>
+
         </div>
       </div>
     </>

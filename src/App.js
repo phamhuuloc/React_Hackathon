@@ -11,9 +11,9 @@ import "./__global.scss";
 import History from "./pages/History/History";
 import MyVouchers from "./pages/MyVouchers/MyVouchers";
 import UserInfo from "./pages/UserInfo/UserInfo";
-import { initializeApp } from "firebase/app";
-import { getAnalytics } from "firebase/analytics";
 import Donors from "./pages/Donors/Donors";
+import Recharge from "./pages/Recharge/Recharge";
+import DonePayment from "./pages/DonePayment/DonePayment";
 
 
 // Your web app's Firebase configuration
@@ -29,8 +29,7 @@ const firebaseConfig = {
 };
 
 // Initialize Firebase
-const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+
 function App() {
   return (
     <BrowserRouter>
@@ -50,6 +49,8 @@ function App() {
 
         <Route path="/history" element={<History />} />
         <Route path="/user" element={<UserInfo />} />
+        <Route path="/recharge" element={<Recharge />} />
+        <Route path="/donepayment" element={<DonePayment />} />
         <Route path="/myvoucher" element={<MyVouchers />} />
         <Route
           path="/admin/voucher/add"

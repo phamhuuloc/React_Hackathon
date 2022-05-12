@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import FileBase from "react-file-base64";
+import {
+    ref,
+    uploadBytes,
+    getDownloadURL,
+} from "firebase/storage";
+import {storage} from '../../../firebase';
+import { v4 } from "uuid";
 
 const initialFormData = {
     supplier_name: "",
@@ -10,17 +16,49 @@ const initialFormData = {
 const AddSupplier = () => {
     const [formData, setFormData] = useState(initialFormData);
 
+    const [uploadImage, setUploadImage] = useState({
+        image: null,
+        url: '',
+        progress: 0
+    });
+
     const handleOnChange = (e) => {
         const { name, value } = e.target;
+
+        if (name === "image") {
+            if (e.target.files[0]) {
+                const image = e.target.files[0];
+                setUploadImage({
+                    ...uploadImage,
+                    image: image,
+                });
+                return;
+            }
+        }
 
         setFormData({
             ...formData,
             [name]: value,
         });
     };
+
     const token = window.localStorage.getItem("token");
+
     const handleOnSubmit = async (e) => {
         e.preventDefault();
+
+        const {image} = uploadImage;
+        if (image == null) return;
+        const imageRef = ref(storage, `images/${image.name + v4()}`);
+        uploadBytes(imageRef, image).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url) => {
+                setFormData({
+                    ...formData, 
+                    image: url
+                });
+            });
+        });
+
         try {
             if (token) {
                 const res = await axios.post(
@@ -43,8 +81,6 @@ const AddSupplier = () => {
             console.log(err);
         }
     };
-
-    const getBase64OfImage = (base64) => base64;
 
     return (
         <>
@@ -73,16 +109,11 @@ const AddSupplier = () => {
 
                         <div className="form-group">
                             <label>Logo nhà tài trợ</label>
-                            <FileBase
+                            <input
+                                name="image"
                                 required
                                 type="file"
-                                mutiple={false}
-                                onDone={({ base64 }) =>
-                                    setFormData({
-                                        ...formData,
-                                        image: getBase64OfImage(base64),
-                                    })
-                                }
+                                onChange={handleOnChange}
                             />
                         </div>
                     </div>

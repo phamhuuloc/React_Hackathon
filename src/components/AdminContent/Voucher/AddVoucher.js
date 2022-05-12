@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import FileBase from "react-file-base64";
+import {
+    ref,
+    uploadBytes,
+    getDownloadURL,
+} from "firebase/storage";
+import {storage} from '../../../firebase';
+import { v4 } from "uuid";
 
 const AddVoucher = () => {
     const [data, setData] = useState({
@@ -10,10 +16,29 @@ const AddVoucher = () => {
         point_cost: "",
         image: "",
     });
+
+    const [uploadImage, setUploadImage] = useState({
+        image: null,
+        url: '',
+        progress: 0
+    });
+
     const token = window.localStorage.getItem("token");
-    console.log(token);
+    
     const addVoucher = async (e) => {
         e.preventDefault();
+        const {image} = uploadImage;
+        if (image == null) return;
+        const imageRef = ref(storage, `images/${image.name + v4()}`);
+        uploadBytes(imageRef, image).then((snapshot) => {
+            getDownloadURL(snapshot.ref).then((url) => {
+                setData({
+                    ...data, 
+                    image: url
+                });
+            });
+        });
+
         try {
             if (token) {
                 const res = await axios.post(
@@ -51,13 +76,22 @@ const AddVoucher = () => {
             return;
         }
 
+        if (name === "image") {
+            if (e.target.files[0]) {
+                const image = e.target.files[0];
+                setUploadImage({
+                    ...uploadImage,
+                    image: image,
+                });
+                console.log(uploadImage)
+                return;
+            }
+        }
         setData({
             ...data,
             [name]: value,
         });
     };
-
-    const getBase64OfImage = (base64) => base64;
 
     return (
         <>
@@ -135,16 +169,11 @@ const AddVoucher = () => {
 
                     <div class="form-group">
                         <label>Ảnh voucher</label>
-                        <FileBase
+                        <input
+                            name="image"
                             required
                             type="file"
-                            mutiple={false}
-                            onDone={({ base64 }) =>
-                                setData({
-                                    ...data,
-                                    image: getBase64OfImage(base64),
-                                })
-                            }
+                            onChange={handleOnChange}
                         />
                     </div>
                 </div>
