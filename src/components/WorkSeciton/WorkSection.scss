@@ -1,35 +1,50 @@
 .work-section {
   padding: 0 20px;
   text-align: center;
+  margin-top: 80px;
+  &-title {
+    font-weight: 700;
+  }
+
   h1 {
     text-align: center;
-    color: tomato;
+    color: #45945d;
     text-transform: uppercase;
   }
   &-container {
+    margin-top: 60px;
     display: flex;
+    align-items: center;
+    justify-content: center;
   }
   &-item {
     text-align: center;
-    width: 383px;
     padding: 0 38px;
+    // width: 350px;
+    // height: 250px;
+    img {
+      max-width: 100%;
+    }
     h4 {
       font-size: 20px;
-      color: tomato;
+      color: #45945d;
     }
     p {
       text-align: center;
       font-size: 15px;
       letter-spacing: 0.8px;
     }
+    &-title {
+      font-weight: 600;
+    }
   }
   button {
-    background: tomato;
+    margin-top: 60px;
+    background: #45945d;
     color: #fff;
     width: 150px;
     height: 50px;
     display: inline-block;
-    font-family: "Poppins";
     font-weight: bold;
     font-size: 14px;
     padding: 10px;
@@ -39,6 +54,67 @@
     border-radius: 3px;
     &:hover {
       background-color: #337747;
+    }
+  }
+}
+
+@media screen and (max-width: 1360px) {
+  .work-section {
+    &-title {
+    }
+
+    h1 {
+      font-size: 36px;
+      line-height: 40px;
+    }
+    &-container {
+    }
+    &-item {
+      img {
+        width: 200px;
+      }
+    }
+    button {
+    }
+  }
+}
+
+@media screen and (max-width: 820px) {
+  .work-section {
+    &-title {
+    }
+
+    h1 {
+    }
+    &-container {
+      flex-direction: column;
+      align-items: center;
+    }
+    &-item {
+      img {
+        width: 150px;
+      }
+    }
+    button {
+    }
+  }
+}
+
+@media screen and (max-width: 620px) {
+  .work-section {
+    &-title {
+    }
+
+    h1 {
+    }
+    &-container {
+    }
+    &-item {
+      img {
+        width: 100px;
+      }
+    }
+    button {
     }
   }
 }

@@ -12,18 +12,21 @@ const Login = () => {
     try {
       e.preventDefault();
       const res = await axios.post(
-        "http://adventure-charity.herokuapp.com/api/auth/login",
+        "https://adventure-charity.herokuapp.com/api/auth/login",
         data
       );
       console.log(res);
+      if (res.data.role === "admin") navigate("/admin/voucher/add");
+      else navigate("/");
+
       // dispatch(setUser(res));
       window.localStorage.setItem("token", res.data.token);
-      navigate("/");
     } catch (err) {
       console.log(err);
     }
     setData({ email: "", password: "" });
   };
+
   return (
     <div className="login">
       <div className="login-container">
@@ -53,7 +56,7 @@ const Login = () => {
           <p>Quên mật khẩu</p>
           <input
             type="button"
-            value="Đăng nhập để quên góp"
+            value="Đăng Nhập"
             className="login-form-button"
             onClick={(e) => login(e)}
           />

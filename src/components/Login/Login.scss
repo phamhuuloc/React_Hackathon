@@ -1,7 +1,10 @@
+@import "../../Responsive.scss";
 .login {
   width: 100vw;
   height: 100vh;
+
   position: relative;
+  overflow: hidden;
   &-container {
     position: absolute;
     top: 50%;
@@ -63,12 +66,21 @@
       font-weight: 500;
       cursor: pointer;
     }
+    @include mobile {
+      padding: 10px;
+    }
+    @include small-mobile {
+      padding: 10px;
+    }
   }
   &-direction {
     span {
       font-size: 15px;
       font-weight: 450;
       cursor: pointer;
+    }
+    @include mobile {
+      padding: 0 10px;
     }
   }
 }

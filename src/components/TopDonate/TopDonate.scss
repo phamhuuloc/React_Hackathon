@@ -1,0 +1,30 @@
+@import "../../Responsive.scss";
+.card {
+  &-title {
+    font-size: 20px;
+    width: 200px;
+    flex: 1;
+  }
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    &-button {
+      display: flex;
+      align-items: center;
+      button {
+        font-size: 14px;
+        border: 0;
+        padding: 10px 20px;
+        border-radius: 4px;
+        margin: 0 10px;
+        cursor: pointer;
+        outline: none;
+      }
+    }
+  }
+}
+.active {
+  background-color: tomato;
+  color: white;
+}

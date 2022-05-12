@@ -1,0 +1,37 @@
+@import "../../Responsive.scss";
+.list-donors {
+  &-title {
+    font-size: 30px;
+    margin: 20px 0;
+    @include small-tablet {
+      font-size: 26px;
+    }
+    @include mobile {
+      font-size: 18px;
+    }
+  }
+  &-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding: 0;
+    &-button {
+      display: flex;
+      align-items: center;
+      button {
+        font-size: 14px;
+        border: 0;
+        padding: 10px 20px;
+        border-radius: 4px;
+        margin: 0 10px;
+        cursor: pointer;
+        outline: none;
+      }
+    }
+  }
+}
+table {
+  img {
+    height: 50px;
+  }
+}
