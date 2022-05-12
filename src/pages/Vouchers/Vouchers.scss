@@ -1,3 +1,4 @@
+@import "../../Responsive.scss";
 .change-voucher {
   padding-left: 20px;
   padding-right: 20px;
@@ -8,9 +9,16 @@
   margin-right: auto;
   display: flex;
   margin-bottom: 50px;
+  @include small-tablet {
+  }
+  @include mobile {
+    padding: 0;
+  }
   &-post {
+    overflow: hidden;
     &-content {
       margin-top: 50px;
+      padding: 0 40px;
       h1,
       h3,
       h4 {
@@ -21,10 +29,20 @@
         font-weight: bold;
         margin-bottom: 5%;
         text-transform: uppercase;
+        text-align: center;
+        @include small-tablet {
+          font-size: 26px;
+        }
+        @include mobile {
+          font-size: 24px;
+        }
       }
       h3 {
         font-size: 20px;
         text-align: left;
+        @include mobile {
+          font-size: 18px;
+        }
       }
       h4 {
         font-size: 20px;
@@ -35,23 +53,55 @@
         font-weight: 500;
         letter-spacing: 1.6px;
         line-height: 26px;
+        @include mobile {
+          font-size: 14px;
+        }
+      }
+      @include small-tablet {
+        padding: 0;
+      }
+      @include mobile {
+        padding: 0 10px;
       }
     }
   }
   &-cards {
     display: flex;
+    @include small-tablet {
+      flex-direction: column;
+    }
+    @include mobile {
+      flex-direction: column;
+    }
+    @include small-mobile {
+      flex-direction: column;
+    }
+
     &-grid {
       width: 83.33333333%;
       text-align: justify;
       font-size: 0;
-      padding: 0 20px;
       margin-top: -2px;
+      @include tablet {
+        padding: 0;
+      }
+      @include small-tablet {
+        width: 100%;
+        padding: 0;
+      }
+      @include mobile {
+        width: 100%;
+        padding: 0;
+      }
     }
 
     &-row {
       display: flex;
       width: 100%;
       flex-wrap: wrap;
+      @include tablet {
+        margin-left: 20px;
+      }
     }
     &-item {
       display: inline-block;
@@ -61,11 +111,20 @@
       overflow: hidden;
       position: relative;
       min-width: 200px;
-      width: 288px;
+      width: 273px;
       height: 400px;
+      margin-bottom: 4px;
       // width: 300px;
+      @include small-tablet {
+        width: 541px;
+        height: 767px;
+      }
+      @include mobile {
+        width: 100vw;
+      }
+
       img {
-        max-width: 100%;
+        width: 100%;
         object-fit: cover;
       }
       &-info {
@@ -88,6 +147,10 @@
         justify-content: center;
         border-radius: 4px;
         padding: 0 8px;
+        @include small-tablet {
+          left: 70%;
+          bottom: 90%;
+        }
         // text-shadow: 1px 1px 2px rgb(0 0 0 / 70%);
       }
       &-option {

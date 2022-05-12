@@ -85,9 +85,9 @@ const Donation = () => {
           <div className="donation-form">
             <div className="donation-form-heading">
               <h1 className="donation-form-title">Quyên góp</h1>
-              <div>
+              <div className="donation-form-wrapper">
                 <button className="donation-form-submit">
-                  Tham gia tài trợ
+                  <Link to="/donors">Tham gia tài trợ</Link>
                 </button>
                 {certificate ? (
                   <button className="donation-form-submit-share">
@@ -95,7 +95,7 @@ const Donation = () => {
                       link={`${window.location.hostname}/certificate/${certificateId}`}
                     >
                       {(link) => (
-                        <a href={link} target="_blank">
+                        <a href={link} target="_blank" rel="noreferrer">
                           Chia sẻ
                         </a>
                       )}

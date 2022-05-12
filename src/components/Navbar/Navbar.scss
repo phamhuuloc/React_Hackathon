@@ -1,3 +1,4 @@
+@import "../../Responsive.scss";
 .navbar {
   display: flex;
   height: 80px;
@@ -34,6 +35,8 @@
   &-menu {
     list-style: none;
     display: flex;
+    align-items: center;
+    justify-content: center;
     margin: auto;
     &-icon {
       font-size: 20px;
@@ -50,51 +53,213 @@
         left: -19px;
       }
       &:hover {
-        transition: all 0.2s linear;
-        // color: tomato;
         .navbar-submenu {
           transition: all 0.2s linear 0s;
           visibility: visible;
+          display: block;
           opacity: 1;
           position: absolute;
+          @include tablet {
+            display: none;
+          }
+          @include small-tablet {
+            display: none;
+          }
+          @include mobile {
+            display: none;
+          }
+          @include small-mobile {
+            display: none;
+          }
         }
       }
       &-score {
         font-size: 16px;
         color: #60e0af;
         margin: 0 4px;
+        a {
+          color: #60e0af;
+        }
+
+        i {
+          font-size: 18px;
+          margin-left: 10px;
+        }
         span {
           font-size: 16px;
           color: #45945d;
         }
+        @include mobile {
+          display: none;
+        }
+        @include small-mobile {
+          display: none;
+        }
+      }
+      @include mobile {
+        display: none;
+      }
+      @include small-mobile {
+        display: none;
       }
     }
     &-icons {
       display: flex;
       align-items: center;
+      justify-content: flex-end;
+      width: 28%;
       margin: auto 0;
       list-style: none;
+      flex: 1;
+      @include tablet {
+        flex: 1;
+      }
+      @include small-tablet {
+        flex: 1;
+      }
+      @include mobile {
+        flex: 1;
+      }
+      @include small-tablet {
+        flex: 1;
+      }
+
+      // flex: 1;
     }
     &-item {
       margin: 0 20px;
       cursor: pointer;
       transition: all 0.2s linear;
       position: relative;
+      &-user {
+        display: none;
+        @include tablet {
+          display: block;
+        }
+        @include small-tablet {
+          display: block;
+        }
+        @include mobile {
+          display: block;
+        }
+        @include small-mobile {
+          display: block;
+        }
+      }
+
+      i {
+        font-size: 32px;
+      }
+
       a {
         text-decoration: none;
         color: black;
         font-weight: 700;
       }
+
       &:hover {
         .navbar-submenu {
           transition: all 0.2s linear 0s;
           visibility: visible;
+          display: block;
           opacity: 1;
-          top: 152%;
+          top: 107%;
+          @include tablet {
+            // position: relative;
+            // top: 0;
+            display: none;
+          }
+          @include small-tablet {
+            // position: relative;
+            // top: 0;
+            display: none;
+          }
+          @include mobile {
+            // position: relative;
+            // top: 0;
+            display: none;
+          }
+          @include small-mobile {
+            // position: relative;
+            // top: 0;
+            display: none;
+          }
         }
+        .navbar-submenu.isShowSubmenu {
+          position: relative;
+          top: 0;
+          transition: none;
+          visibility: visible;
+          display: block;
+        }
+      }
+      @include tablet {
+        margin: 20px;
+        text-align: center;
+      }
+      @include small-tablet {
+        margin: 20px;
+        text-align: center;
+      }
+      @include mobile {
+        margin: 20px 0;
+        text-align: center;
       }
     }
   }
+  &-submenu-user {
+    list-style: none;
+    display: none;
+    padding: 0 30px;
+    li {
+      margin: 6px 0;
+      text-align: left;
+      color: #55c48f;
+      span {
+        color: #000;
+      }
+
+      a {
+        font-weight: 400;
+        text-decoration-color: tomato;
+      }
+      i {
+        font-size: 18px;
+        color: #55c48f;
+        margin-left: 10px;
+      }
+      button {
+        background: tomato;
+        color: #fff;
+        margin-right: 25px;
+        display: inline-block;
+        font-family: "Poppins";
+        font-weight: bold;
+        font-size: 14px;
+        padding: 10px;
+        border: none;
+        cursor: pointer;
+        text-transform: uppercase;
+        border-radius: 3px;
+        transition: all 0.2s ease-in-out;
+      }
+    }
+
+    li {
+      margin: 6px 0;
+      text-align: left;
+      a {
+        font-weight: 400;
+      }
+    }
+    &.showUserMenu {
+      display: block;
+    }
+    @include tablet {
+      display: none;
+    }
+  }
+
   &-submenu,
   &-user-menu {
     list-style: none;
@@ -113,6 +278,17 @@
     border-radius: 7px 7px 3px 3px;
     opacity: 0;
     visibility: hidden;
+    display: none;
+    @include tablet {
+      display: none;
+    }
+    @include small-tablet {
+      display: none;
+    }
+    @include small-tablet {
+      display: none;
+    }
+
     &::before {
       border-style: solid;
       border-width: 0 6px 6px 6px;
@@ -122,6 +298,15 @@
       left: 13%;
       position: absolute;
       transition: all 0.3s ease-out 0s;
+      @include tablet {
+        display: none;
+      }
+      @include small-tablet {
+        display: none;
+      }
+      @include mobile {
+        display: none;
+      }
     }
     &::after {
       display: block;
@@ -130,7 +315,7 @@
       height: 50px;
       background-color: none;
       position: absolute;
-      top: -23%;
+      top: -8%;
     }
 
     li {
@@ -145,6 +330,43 @@
         color: #45945d;
         transition: all 0.3s ease-out 0s;
       }
+    }
+    @include tablet {
+      position: relative;
+      inset: 0;
+      visibility: visible;
+      opacity: 1;
+      width: 100%;
+      border-top: 0;
+      box-shadow: none;
+    }
+
+    @include small-tablet {
+      position: relative;
+      inset: 0;
+      visibility: visible;
+      opacity: 1;
+      border-top: 0;
+      width: 100%;
+      box-shadow: none;
+    }
+    @include mobile {
+      position: relative;
+      inset: 0;
+      visibility: visible;
+      opacity: 1;
+      border-top: 0;
+      width: 100%;
+      box-shadow: none;
+    }
+    @include small-mobile {
+      position: relative;
+      inset: 0;
+      visibility: visible;
+      opacity: 1;
+      border-top: 0;
+      width: 100%;
+      box-shadow: none;
     }
   }
 
@@ -205,14 +427,16 @@
       align-items: stretch;
       transition: all 0.2s linear;
       transform: translateX(110%);
+      justify-content: revert;
       &.is-show {
         transform: translateX(0);
       }
     }
+
     .closeToggle {
       margin-top: 28px;
       display: block;
-      margin-left: 216px;
+      margin-left: 32px;
     }
 
     .openToggle {
@@ -233,7 +457,7 @@
     .closeToggle {
       margin-top: 14px;
       display: block;
-      margin-left: 216px;
+      margin-left: 32px;
     }
 
     .openToggle {

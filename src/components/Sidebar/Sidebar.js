@@ -32,13 +32,13 @@ const Sidebar = () => {
   };
   // update state category  on redux store
   dispatch(setCategory(data));
-  const [activeItem, setActiveItem] = useState(0);
+  const [activeItem, setActiveItem] = useState(1);
   const handleClick = (id) => {
     setActiveItem(id);
   };
 
   return (
-    <div className="sidebar-panel col-2">
+    <div className="sidebar-panel ">
       <div className="sidebar-panel-avatar">
         {token ? (
           <div className="sidebar-panel--login">
@@ -59,7 +59,9 @@ const Sidebar = () => {
             {menuItem.options.map((item) => {
               return (
                 <li
-                  className={item.id === activeItem ? "active" : " "}
+                  className={
+                    item.class + (item.id === activeItem ? "active" : " ")
+                  }
                   onClick={() => {
                     // setCategoryVoucher("mypham");
                     handleClick(item.id);

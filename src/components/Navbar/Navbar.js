@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { AiOutlineUser } from "react-icons/ai";
+import { GoDiffAdded } from "react-icons/go";
+import { RiArrowDropDownLine } from "react-icons/ri";
 import { FiGift } from "react-icons/fi";
 import logo from "../../img/logo.png";
 import { useSelector } from "react-redux";
@@ -16,7 +18,8 @@ const Navbar = () => {
   let user = useSelector((state) => state.user.value);
 
   const dispatch = useDispatch();
-
+  const [showSubmenu, setShowSubMenu] = useState(false);
+  const [showSubmenuUser, setShowSubMenuUser] = useState(false);
   const handleLogOut = () => {
     console.log("run.....");
     user = "";
@@ -28,7 +31,6 @@ const Navbar = () => {
   // useEffect and the context API to check if a user i logged in and protect a
   // route
 
-  //
   const [userData, setUserData] = useState({
     token: "",
     user: {},
@@ -63,6 +65,11 @@ const Navbar = () => {
   const handleToggle = () => {
     setNavbarOpen(!navbarOpen);
   };
+  const handleToggleSubmenu = (e) => {
+    console.log(e);
+    e.target.classList.contains("isShowSubmenu");
+  };
+  console.log(showSubmenuUser);
   return (
     <div className="navbar">
       <div className="navbar-container">
@@ -73,9 +80,66 @@ const Navbar = () => {
           <span className="closeToggle" onClick={handleToggle}>
             <i className="fa fa-times"></i>
           </span>
-          <li className="navbar-menu-item">
-            <Link to="/story">Giới thiệu</Link>
-            <ul className="navbar-submenu">
+          {token ? (
+            <li className="navbar-menu-item navbar-menu-item-user">
+              <Link to="" onClick={() => setShowSubMenuUser(!showSubmenuUser)}>
+                User
+              </Link>
+              <i>
+                <RiArrowDropDownLine />
+              </i>
+
+              <ul
+                className={
+                  showSubmenuUser
+                    ? "navbar-submenu-user showUserMenu"
+                    : "navbar-submenu-user"
+                }
+              >
+                <li>
+                  <span>Điểm:</span> {userData.user.point}
+                </li>
+                <li>
+                  <span>Tiền:</span> {userData.user.wallet_balance}
+                </li>
+                <li>
+                  <Link to="/myvoucher">
+                    Voucher của tôi
+                    <i>
+                      <FiGift />
+                    </i>
+                  </Link>
+                </li>
+
+                <li>
+                  <Link to="/naptien">
+                    Nạp Tiền
+                    <i>
+                      <GoDiffAdded />
+                    </i>
+                  </Link>
+                </li>
+                <li onClick={() => handleLogOut()}>
+                  <button>Đăng xuất</button>
+                </li>
+              </ul>
+            </li>
+          ) : (
+            <div></div>
+          )}
+          <li
+            className="navbar-menu-item"
+            onClick={() => setShowSubMenu(!showSubmenu)}
+          >
+            <Link to="">Giới thiệu</Link>
+            <i>
+              <RiArrowDropDownLine />
+            </i>
+            <ul
+              className={
+                showSubmenu ? "navbar-submenu isShowSubmenu" : "navbar-submenu"
+              }
+            >
               <li>
                 <Link to="/story">Câu chuyện của chúng tôi!</Link>
               </li>
@@ -88,19 +152,13 @@ const Navbar = () => {
             <Link to="/donation">Quyên góp</Link>
           </li>
           <li className="navbar-menu-item">
-            <Link to="/history">Lịch sử quyên góp</Link>
+            <Link to={token ? "/history" : "/login"}>Lịch sử quyên góp</Link>
           </li>
           <li className="navbar-menu-item">
             <Link to="/vouchers">Đổi voucher</Link>
           </li>
           <li className="navbar-menu-item">
             <Link to="/donors">Nhà tài trợ</Link>
-            {/* <ul className="navbar-submenu"> */}
-            {/*   <li> */}
-            {/*     <Link to="/donors">Giới thiệu</Link> */}
-            {/*   </li> */}
-            {/*   <li></li> */}
-            {/* </ul> */}
           </li>
         </ul>
         <ul className="navbar-menu-icons">
@@ -108,9 +166,17 @@ const Navbar = () => {
             <>
               <li className="navbar-menu-icon">
                 <Link to="/user">
-                  <AiOutlineUser />
+                  <i>
+                    <AiOutlineUser />
+                  </i>
                 </Link>
-                <ul className="navbar-submenu navbar-submenu-user">
+                <ul
+                  className={
+                    showSubmenu
+                      ? "navbar-submenu isShowSubmenu navbar-submenu-user"
+                      : "navbar-submenu navbar-submenu-user"
+                  }
+                >
                   <li>
                     <Link to="/login" onClick={() => handleLogOut()}>
                       Đăng xuất
@@ -133,6 +199,11 @@ const Navbar = () => {
               </li>
               <li className="navbar-menu-icon-score">
                 <span>Tiền:</span> {userData.user.wallet_balance}
+                <Link to="">
+                  <i>
+                    <GoDiffAdded />
+                  </i>
+                </Link>
               </li>
 
               <li className="navbar-menu-icon">

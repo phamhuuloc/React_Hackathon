@@ -48,7 +48,6 @@ function App() {
           path="/admin/voucher/edit/:id"
           element={<Admin route="/admin/voucher/edit" />}
         />
-
         <Route path="/history" element={<History />} />
         <Route path="/user" element={<UserInfo />} />
         <Route path="/myvoucher" element={<MyVouchers />} />
