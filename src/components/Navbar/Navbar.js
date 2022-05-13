@@ -21,7 +21,6 @@ const Navbar = () => {
   const [showSubmenu, setShowSubMenu] = useState(false);
   const [showSubmenuUser, setShowSubMenuUser] = useState(false);
   const handleLogOut = () => {
-    console.log("run.....");
     user = "";
     window.localStorage.removeItem("token");
     dispatch(setUser(user));
@@ -69,7 +68,7 @@ const Navbar = () => {
     console.log(e);
     e.target.classList.contains("isShowSubmenu");
   };
-  console.log(showSubmenuUser);
+  console.log(showSubmenu);
   return (
     <div className="navbar">
       <div className="navbar-container">
@@ -82,9 +81,9 @@ const Navbar = () => {
           </span>
           {token ? (
             <li className="navbar-menu-item navbar-menu-item-user">
-              <Link to="" onClick={() => setShowSubMenuUser(!showSubmenuUser)}>
-                User
-              </Link>
+              <span onClick={() => setShowSubMenuUser(!showSubmenuUser)}>
+                {userData.user.fullname}
+              </span>
               <i>
                 <RiArrowDropDownLine />
               </i>
@@ -112,7 +111,7 @@ const Navbar = () => {
                 </li>
 
                 <li>
-                  <Link to="/naptien">
+                  <Link to="/recharge">
                     Nạp Tiền
                     <i>
                       <GoDiffAdded />
@@ -127,11 +126,8 @@ const Navbar = () => {
           ) : (
             <div></div>
           )}
-          <li
-            className="navbar-menu-item"
-            onClick={() => setShowSubMenu(!showSubmenu)}
-          >
-            <Link to="">Giới thiệu</Link>
+          <li className="navbar-menu-item">
+            <span onClick={() => setShowSubMenu(!showSubmenu)}>Giới thiệu</span>
             <i>
               <RiArrowDropDownLine />
             </i>
@@ -199,7 +195,7 @@ const Navbar = () => {
               </li>
               <li className="navbar-menu-icon-score">
                 <span>Tiền:</span> {userData.user.wallet_balance}
-                <Link to="">
+                <Link to="/recharge">
                   <i>
                     <GoDiffAdded />
                   </i>

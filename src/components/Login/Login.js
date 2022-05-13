@@ -2,8 +2,10 @@ import axios from "axios";
 import { useId, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import axiosClient from "../../apis/items/axiosClient";
 import "./Login.scss";
+
+import { toast } from "react-toastify";
+
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
@@ -15,14 +17,13 @@ const Login = () => {
         "https://adventure-charity.herokuapp.com/api/auth/login",
         data
       );
-      console.log(res);
       if (res.data.role === "admin") navigate("/admin/voucher/add");
       else navigate("/");
-
-      // dispatch(setUser(res));
       window.localStorage.setItem("token", res.data.token);
+      toast.success("Đăng nhập thành công");
     } catch (err) {
       console.log(err);
+      toast.error(err.response.data.message);
     }
     setData({ email: "", password: "" });
   };

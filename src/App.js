@@ -14,6 +14,8 @@ import UserInfo from "./pages/UserInfo/UserInfo";
 import Donors from "./pages/Donors/Donors";
 import Recharge from "./pages/Recharge/Recharge";
 import DonePayment from "./pages/DonePayment/DonePayment";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import Certificate from "./pages/Certificate/Certificate";
 
@@ -66,6 +68,17 @@ function App() {
           element={<Admin route="/admin/supplier/add" />}
         />
       </Routes>
+      <ToastContainer
+        position="bottom-left"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+      />
     </BrowserRouter>
   );
 }

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axiosClient from "../../apis/items/axiosClient";
 import axios from "axios";
 import "./Register.scss";
-
+import { toast } from "react-toastify";
 const Register = () => {
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState({});
@@ -36,10 +36,11 @@ const Register = () => {
         data_1
       );
       console.log(res);
-      alert("dang ky thanh cong");
+      toast.success("dang ky thanh cong");
       navigate("/login");
     } catch (err) {
       console.log(err);
+      toast.error(err.response.data.message);
     }
   };
 

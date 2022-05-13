@@ -5,8 +5,8 @@ import axios from "axios";
 import "./Donation.scss";
 import { Link, useNavigate } from "react-router-dom";
 import { isFulfilled } from "@reduxjs/toolkit";
-import ShareLink from 'react-facebook-share-link';
-
+import ShareLink from "react-facebook-share-link";
+import { toast } from "react-toastify";
 
 const Donation = () => {
   const navigate = useNavigate();
@@ -59,9 +59,7 @@ const Donation = () => {
         setCertificateId(res.data.certificateId);
         setCertificate(res.data.certificate);
 
-        console.log(certificate);
-
-        alert(res.data.message);
+        toast.success(res.data.message);
       }
       setData({
         typeDonation: "",
@@ -72,7 +70,7 @@ const Donation = () => {
         shareIdea: "",
       });
     } catch (err) {
-      alert(err.response.data.message);
+      toast.error(err.response.data.message);
       console.log(err);
     }
   };
@@ -92,9 +90,7 @@ const Donation = () => {
                 </button>
                 {certificate ? (
                   <button className="donation-form-submit-share">
-                    <ShareLink
-                      link={`${certificate}`}
-                    >
+                    <ShareLink link={`${certificate}`}>
                       {(link) => (
                         <a href={link} target="_blank" rel="noreferrer">
                           Chia sẻ
@@ -234,9 +230,12 @@ const Donation = () => {
                 Làm Mới
               </button>
             </div>
-            <img src={`${certificate}`} width="885px" height="626px"></img>      
+            {certificate ? (
+              <img src={`${certificate}`} width="885px" height="626px"></img>
+            ) : (
+              <div></div>
+            )}
           </div>
-
         </div>
       </div>
     </>
