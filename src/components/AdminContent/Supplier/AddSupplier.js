@@ -47,23 +47,29 @@ const AddSupplier = () => {
     const handleOnSubmit = async (e) => {
         e.preventDefault();
 
-        const {image} = uploadImage;
-        if (image == null) return;
-        const imageRef = ref(storage, `images/${image.name + v4()}`);
-        uploadBytes(imageRef, image).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then((url) => {
-                setFormData({
-                    ...formData, 
-                    image: url
-                });
-            });
-        });
-
         try {
+            const getUrl = () => {
+                return new Promise((resolve, reject) => {
+                    const {image} = uploadImage;
+                    if (image == null) return;
+                    const imageRef = ref(storage, `images/${image.name + v4()}`);
+                    uploadBytes(imageRef, image).then((snapshot) => {
+                        getDownloadURL(snapshot.ref).then((url) => {
+                            resolve(url)
+                        });
+                    });
+                })
+            }
+            
+            const url = await getUrl();
+
             if (token) {
                 const res = await axios.post(
                     "https://adventure-charity.herokuapp.com/api/supplier/new",
-                    formData,
+                    {
+                        ...formData,
+                        image: url
+                    },
                     {
                         headers: {
                             authorization: token,

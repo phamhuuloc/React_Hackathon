@@ -84,10 +84,11 @@ const Navbar = () => {
             <li className="navbar-menu-item navbar-menu-item-user">
               <Link to="" onClick={() => setShowSubMenuUser(!showSubmenuUser)}>
                 User
+                <i>
+                  <RiArrowDropDownLine />
+                </i>
               </Link>
-              <i>
-                <RiArrowDropDownLine />
-              </i>
+
 
               <ul
                 className={
