@@ -127,10 +127,14 @@ const Navbar = () => {
             <div></div>
           )}
           <li className="navbar-menu-item">
-            <span onClick={() => setShowSubMenu(!showSubmenu)}>Giới thiệu</span>
-            <i>
-              <RiArrowDropDownLine />
-            </i>
+            <div>
+              <span onClick={() => setShowSubMenu(!showSubmenu)}>
+                Giới thiệu
+              </span>
+              <i>
+                <RiArrowDropDownLine />
+              </i>
+            </div>
             <ul
               className={
                 showSubmenu ? "navbar-submenu isShowSubmenu" : "navbar-submenu"

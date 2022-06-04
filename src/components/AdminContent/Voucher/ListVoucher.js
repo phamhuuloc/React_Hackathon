@@ -17,8 +17,6 @@ const ListVoucher = () => {
 
     const token = window.localStorage.getItem("token");
 
-    
-
     useEffect(() => {
         const getListVouchers = async () => {
             const res = await axios.get(
@@ -50,7 +48,7 @@ const ListVoucher = () => {
     async function removeVoucher(id) {
         const deleteVoucher = async () => {
             const res = await axios.delete(
-                `http://adventure-charity.herokuapp.com/api/voucher/delete/${id}`,
+                `https://adventure-charity.herokuapp.com/api/voucher/delete/${id}`,
                 {
                     headers: {
                         authorization: token,
@@ -65,19 +63,20 @@ const ListVoucher = () => {
         const value = document.getElementById(id).value;
         const formReq = {
             voucherCode: value,
-            voucherId: id
-        }
+            voucherId: id,
+        };
         const addCode = async () => {
             const res = await axios.post(
-              `http://adventure-charity.herokuapp.com/api/voucher/newcode/`, formReq,
-              {
-                headers: {
-                  authorization: token,
-                },
-              }
+                `https://adventure-charity.herokuapp.com/api/voucher/newcode/`,
+                formReq,
+                {
+                    headers: {
+                        authorization: token,
+                    },
+                }
             );
-          };
-          addCode();
+        };
+        addCode();
     }
 
     return (

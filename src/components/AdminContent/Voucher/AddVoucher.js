@@ -14,7 +14,6 @@ const AddVoucher = () => {
         category: "",
         supplier_name: "",
         point_cost: "",
-        image: "",
     });
 
     const [uploadImage, setUploadImage] = useState({
@@ -27,23 +26,31 @@ const AddVoucher = () => {
     
     const addVoucher = async (e) => {
         e.preventDefault();
-        const {image} = uploadImage;
-        if (image == null) return;
-        const imageRef = ref(storage, `images/${image.name + v4()}`);
-        uploadBytes(imageRef, image).then((snapshot) => {
-            getDownloadURL(snapshot.ref).then((url) => {
-                setData({
-                    ...data, 
-                    image: url
-                });
-            });
-        });
+        
 
         try {
+            const getUrl = () => {
+                return new Promise((resolve, reject) => {
+                    const {image} = uploadImage;
+                    if (image == null) return;
+                    const imageRef = ref(storage, `images/${image.name + v4()}`);
+                    uploadBytes(imageRef, image).then((snapshot) => {
+                        getDownloadURL(snapshot.ref).then((url) => {
+                            resolve(url)
+                        });
+                    });
+                })
+            }
+            
+            const url = await getUrl();
+            
             if (token) {
                 const res = await axios.post(
                     "https://adventure-charity.herokuapp.com/api/voucher/new",
-                    data,
+                    {
+                        ...data,
+                        image: url
+                    },
                     {
                         headers: {
                             authorization: token,
@@ -57,8 +64,12 @@ const AddVoucher = () => {
                 category: "",
                 supplier_name: "",
                 point_cost: "",
-                image: "",
             });
+            setUploadImage({
+                image: null,
+                url: '',
+                progress: 0
+            })
         } catch (err) {
             alert(err.response.data.message);
             console.log(err);

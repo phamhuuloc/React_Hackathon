@@ -56,7 +56,7 @@
         .navbar-submenu {
           transition: all 0.2s linear 0s;
           visibility: visible;
-          display: block;
+          display: inline-block;
           opacity: 1;
           position: absolute;
           @include tablet {
@@ -135,6 +135,11 @@
       cursor: pointer;
       transition: all 0.2s linear;
       position: relative;
+      &-arrow {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
       span {
         font-weight: 700;
       }
@@ -155,7 +160,7 @@
       }
 
       i {
-        font-size: 32px;
+        font-size: 20px;
       }
 
       a {
@@ -166,6 +171,7 @@
 
       &:hover {
         .navbar-submenu {
+          position: absolute;
           transition: all 0.2s linear 0s;
           visibility: visible;
           display: block;
@@ -193,11 +199,36 @@
           }
         }
         .navbar-submenu.isShowSubmenu {
-          position: relative;
-          top: 0;
-          transition: none;
-          visibility: visible;
-          display: block;
+          visibility: hidden;
+          display: none;
+          @include small-tablet {
+            position: relative;
+            top: 0;
+            transition: none;
+            visibility: visible;
+            display: block;
+          }
+          @include tablet {
+            position: relative;
+            top: 0;
+            transition: none;
+            visibility: visible;
+            display: block;
+          }
+          @include mobile {
+            position: relative;
+            top: 0;
+            transition: none;
+            visibility: visible;
+            display: block;
+          }
+          @include small-mobile {
+            position: relative;
+            top: 0;
+            transition: none;
+            visibility: visible;
+            display: block;
+          }
         }
       }
       @include tablet {
