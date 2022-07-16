@@ -17,6 +17,7 @@
     "pdf-lib": "^1.17.1",
     "query-string": "^7.1.1",
     "react": "^18.1.0",
+    "react-circular-progressbar": "^2.1.0",
     "react-dom": "^18.1.0",
     "react-facebook-share-link": "^1.0.4",
     "react-file-base64": "^1.0.3",

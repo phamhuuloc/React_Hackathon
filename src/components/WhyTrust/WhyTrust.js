@@ -5,6 +5,8 @@ import img_block_3 from "../../img/block_3.png";
 import img_block_4 from "../../img/block_4.png";
 import img_block_5 from "../../img/block_5.png";
 import img_block_6 from "../../img/block_6.png";
+import blockchain from "../../img/blockchain.png"
+import charity from "..//../img/charity.png"
 import "./WhyTrust.scss";
 import { Link } from "react-router-dom";
 const WhyTrust = () => {
@@ -16,7 +18,7 @@ const WhyTrust = () => {
       <div className="why-trust-container">
         <div className="why-trust-container-reason">
           <div className="why-trust-container-reason-img">
-
+            <img src={charity}></img>
           </div>
           <div className="why-trust-container-reason-content">
             <h4>Các Hoàn Cảnh Được Lựa Chọn Nghiêm Ngặt</h4>
@@ -37,14 +39,14 @@ const WhyTrust = () => {
 
           </div>
           <div className="why-trust-container-reason-img">
-
+            <img src={blockchain} className="blockchain"></img>
           </div>
 
         </div>
       </div>
 
       <button>
-        <Link to="/donors">Tham gia tài trợ</Link>
+        <Link to="/donors">THAM GIA TÀI TRỢ</Link>
       </button>
     </div>
   );

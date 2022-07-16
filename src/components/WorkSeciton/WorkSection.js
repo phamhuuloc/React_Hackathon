@@ -27,7 +27,7 @@ const WorkSection = () => {
         </div>
         <div className="work-section-item">
           <img src={step_3} alt="" />
-          <h4 className="work-section-item-title">Nhận phần thưởng</h4>
+          <h4 className="work-section-item-title"></h4>
           <p>
             Những nhà tài trợ sẽ gửi đến những người quyên góp các voucher của
             những sản phẩm nhằm tri ân những điều tốt đẹp của người quyên góp

@@ -21,6 +21,7 @@ const Donation = () => {
     address: "",
     shareIdea: "",
   });
+
   const handleResetButton = () => {
     setData({
       typeDonation: "",

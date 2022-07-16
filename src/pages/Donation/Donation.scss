@@ -83,7 +83,8 @@
       }
     }
     &-title {
-      color: #55c48f;
+      color: #01BFDE;
+      padding-bottom: 20px;
       @include small-tablet {
         font-size: 26px;
       }
@@ -147,7 +148,7 @@
       input:focus {
         outline: solid;
         outline-width: 1px;
-        outline-color: #4fb56d;
+        outline-color: #01BFDE;
       }
     }
     &-button {
@@ -167,7 +168,7 @@
       }
     }
     &-submit {
-      background: #329e5e;
+      background: #01BFDE;
       color: #fff;
       margin-right: 25px;
       display: inline-block;
@@ -199,7 +200,7 @@
         }
       }
       &:hover {
-        background-color: #337747;
+        background-color: #0094AB;
       }
       &-share {
         color: #fff;
@@ -238,7 +239,7 @@
       cursor: pointer;
       text-transform: uppercase;
       &:hover {
-        background: #329e5e;
+        background: #0094AB;
         color: #fff;
       }
     }
