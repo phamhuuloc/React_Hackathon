@@ -27,7 +27,7 @@ const UserInfo = () => {
         e.preventDefault();
         const updateUser = async () => {
             const res = await axios.post(
-              `https://adventure-charity.herokuapp.com/api/user/edit/`, formData,
+              `https://khoi-hi-vong.herokuapp.com/api/user/edit/`, formData,
               {
                 headers: {
                   authorization: token,

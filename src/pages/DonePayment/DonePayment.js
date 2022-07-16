@@ -43,7 +43,7 @@ const DonePayment = () => {
           const token = window.localStorage.getItem("token");
           console.log(currentParams);
           let res = await axios.post(
-            "https://adventure-charity.herokuapp.com/api/user/vnpay_ipn",
+            "https://khoi-hi-vong.herokuapp.com/api/user/vnpay_ipn",
             currentParams,
             {
               headers: {

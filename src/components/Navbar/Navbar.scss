@@ -5,6 +5,8 @@
   padding: 0 26px;
   font-size: 18px;
   -webkit-box-shadow: 0 10px 15px rgb(25 25 25 / 10%);
+
+  background-color: white;
   z-index: 10000;
 
   &-container {
@@ -17,12 +19,15 @@
     display: flex;
     align-items: center;
     cursor: pointer;
+    margin-top: 8px;
     img {
       object-fit: cover;
-      width: 142px;
-      height: 68px;
+      width: 50px;
+      height: 50px;
+      margin-right: 20px;
     }
   }
+
 
   .openToggle {
     display: none;
@@ -38,6 +43,7 @@
     align-items: center;
     justify-content: center;
     margin: auto;
+    line-height: 40px;
     &-icon {
       font-size: 20px;
       margin: 0 20px;
@@ -45,14 +51,16 @@
       cursor: pointer;
       position: relative;
       a {
-        color: #45945d;
+        color: #01BFDE;
         font-weight: 500;
         display: block;
+
       }
       & > .navbar-submenu {
         left: -19px;
       }
       &:hover {
+
         .navbar-submenu {
           transition: all 0.2s linear 0s;
           visibility: visible;
@@ -79,10 +87,10 @@
       }
       &-score {
         font-size: 16px;
-        color: #60e0af;
+        color: #0094AB;
         margin: 0 4px;
         a {
-          color: #60e0af;
+          color: #0094AB;
         }
 
         i {
@@ -91,7 +99,7 @@
         }
         span {
           font-size: 16px;
-          color: #45945d;
+          color: #01BFDE;
         }
         @include mobile {
           display: none;
@@ -131,7 +139,13 @@
       // flex: 1;
     }
     &-item {
-      margin: 0 20px;
+      &:hover{
+        background-color: rgba(200, 200, 200, 0.3);
+        height: 100%;
+        border-radius: 5px;
+
+      }
+      padding: 0 20px;
       cursor: pointer;
       transition: all 0.2s linear;
       position: relative;
@@ -167,6 +181,8 @@
         text-decoration: none;
         color: black;
         font-weight: 700;
+
+
       }
 
       &:hover {
@@ -252,7 +268,7 @@
     li {
       margin: 6px 0;
       text-align: left;
-      color: #55c48f;
+      color: #0094AB;
       span {
         color: #000;
       }
@@ -263,11 +279,11 @@
       }
       i {
         font-size: 18px;
-        color: #55c48f;
+        color: #0094AB;
         margin-left: 10px;
       }
       button {
-        background: #45945d;
+        background: #01BFDE;
         color: #fff;
         margin-top: 4px;
         width: 150px;
@@ -312,7 +328,7 @@
     width: 210px;
     box-shadow: 0 0 10px 3px rgb(0 0 0 / 5%);
     padding: 17px 0;
-    border-top: 3px solid #45945d;
+    border-top: 3px solid #01BFDE;
     border-radius: 7px 7px 3px 3px;
     opacity: 0;
     visibility: hidden;
@@ -330,7 +346,7 @@
     &::before {
       border-style: solid;
       border-width: 0 6px 6px 6px;
-      border-color: transparent transparent #45945d transparent;
+      border-color: transparent transparent #01BFDE transparent;
       content: "";
       top: -8px;
       left: 13%;
@@ -365,7 +381,7 @@
         display: block;
       }
       a:hover {
-        color: #45945d;
+        color: #01BFDE;
         transition: all 0.3s ease-out 0s;
       }
     }
@@ -409,7 +425,7 @@
   }
 
   &-register {
-    background: #45945d;
+    background: #01BFDE;
     color: #fff;
     margin-right: 25px;
     text-align: center;
@@ -428,7 +444,7 @@
       padding: 10px;
     }
     &:hover {
-      background-color: #337747;
+      background-color: #0094AB;
     }
   }
   &-login {
@@ -438,7 +454,7 @@
       padding: 10px;
     }
     a:hover {
-      color: #45945d;
+      color: #01BFDE;
     }
   }
 }
@@ -447,7 +463,7 @@
   .navbar {
     &-logo {
       img {
-        width: 100px;
+        width: 40px;
         height: 40px;
       }
     }
@@ -488,7 +504,7 @@
   .navbar {
     &-logo {
       img {
-        width: 80px;
+        width: 40px;
         height: 40px;
       }
     }
@@ -513,7 +529,7 @@
         padding: 10px;
       }
       &:hover {
-        background-color: #337747;
+        background-color: #0094AB;
       }
     }
     &-login {
@@ -524,7 +540,7 @@
         padding: 8px;
       }
       a:hover {
-        color: #45945d;
+        color: #01BFDE;
       }
     }
   }

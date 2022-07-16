@@ -17,7 +17,7 @@ const History = () => {
             }
             if (token) {
                 const userResponse = await axios.get(
-                    "https://adventure-charity.herokuapp.com/api/user/donation",
+                    "https://khoi-hi-vong.herokuapp.com/api/user/donation",
                     {
                         headers: {
                             authorization: token,

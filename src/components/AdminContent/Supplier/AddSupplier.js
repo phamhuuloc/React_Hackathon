@@ -65,7 +65,7 @@ const AddSupplier = () => {
 
             if (token) {
                 const res = await axios.post(
-                    "https://adventure-charity.herokuapp.com/api/supplier/new",
+                    "https://khoi-hi-vong.herokuapp.com/api/supplier/new",
                     {
                         ...formData,
                         image: url

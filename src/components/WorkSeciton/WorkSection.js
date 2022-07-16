@@ -11,22 +11,18 @@ const WorkSection = () => {
       <div className="work-section-container">
         <div className="work-section-item">
           <img src={step_1} alt="" />
-          <h4 className="work-section-item-title">Lựa chọn cách quyên góp</h4>
+          <h4 className="work-section-item-title">Tạo Tài Khoản Và Nạp Tiền</h4>
           <p>
-            Bạn có thể quyên góp bằng tiền hoặc quần áo nếu quyên góp quần áo
-            thì hãy nựa chọn địa điểm gửi hàng hoặc bạn có thể mang đến trụ sở
-            gần nhất
+            Bạn có thể quyên góp bằng tiền đã được nạp vào tài khoản do chính bạn tạo để giúp đỡ cho những hoàn cảnh khó khăn
           </p>
         </div>
         <div className="work-section-item">
           <img src={step_2} alt="" />
           <h4 className="work-section-item-title">
-            Để đồ quyên góp trước cửa nhà
+            Lựa Chọn Hoàn Cảnh Để Ủng Hộ
           </h4>
           <p>
-            Chúng tôi sẽ đến nhà và thu gom những sản phẩm mà bạn đã quyên góp
-            ,những vật phẩm này sẽ được giao cho tổ chức của chính phủ , để họ
-            có thể chuyển nó đến những người có hoàn cảnh khó khăn.
+            Hằng tháng, chúng tôi sẽ cập nhật danh sách các hoàn cảnh khó khăn. Bạn có thể ủng hộ bất kì
           </p>
         </div>
         <div className="work-section-item">

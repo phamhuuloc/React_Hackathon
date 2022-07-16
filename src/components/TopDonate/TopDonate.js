@@ -18,7 +18,7 @@ const TopDonate = () => {
   useEffect(() => {
     const getListTopDonate = async () => {
       const topDonationList = await axios.get(
-        "https://adventure-charity.herokuapp.com/api/donation/list/top"
+        "https://khoi-hi-vong.herokuapp.com/api/donation/list/top"
       );
       console.log(topDonationList);
 

@@ -16,7 +16,7 @@ const MyVouchers = () => {
       }
       if (token) {
         const userResponse = await axios.get(
-          "https://adventure-charity.herokuapp.com/api/user/voucher",
+          "https://khoi-hi-vong.herokuapp.com/api/user/voucher",
           {
             headers: {
               authorization: token,

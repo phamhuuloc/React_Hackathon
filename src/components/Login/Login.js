@@ -14,7 +14,7 @@ const Login = () => {
     try {
       e.preventDefault();
       const res = await axios.post(
-        "https://adventure-charity.herokuapp.com/api/auth/login",
+        "https://khoi-hi-vong.herokuapp.com/api/auth/login",
         data
       );
       if (res.data.role === "admin") navigate("/admin/voucher/add");

@@ -20,12 +20,12 @@ const Sidebar = () => {
   const getListVouchers = async (categoryVoucher) => {
     if (categoryVoucher === "tatca") {
       const res = await axios.get(
-        "https://adventure-charity.herokuapp.com/api/voucher/list?page=1"
+        "https://khoi-hi-vong.herokuapp.com/api/voucher/list?page=1"
       );
       setData(res.data.vouchers);
     } else {
       const res = await axios.get(
-        `https://adventure-charity.herokuapp.com/api/voucher/category/${categoryVoucher}`
+        `https://khoi-hi-vong.herokuapp.com/api/voucher/category/${categoryVoucher}`
       );
       setData(res.data.vouchers);
     }

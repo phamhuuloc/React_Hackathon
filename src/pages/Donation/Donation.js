@@ -48,7 +48,7 @@ const Donation = () => {
       };
       if (token) {
         const res = await axios.post(
-          "https://adventure-charity.herokuapp.com/api/user/donation",
+          "https://khoi-hi-vong.herokuapp.com/api/user/donation",
           data_1,
           {
             headers: {
