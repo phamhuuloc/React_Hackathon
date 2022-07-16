@@ -43,7 +43,7 @@ const Navbar = () => {
       }
       if (token) {
         const userResponse = await axios.get(
-          "https://adventure-charity.herokuapp.com/api/user",
+          "https://khoi-hi-vong.herokuapp.com/api/user",
           {
             headers: {
               authorization: token,

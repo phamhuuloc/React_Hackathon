@@ -16,7 +16,7 @@ const Recharge = () => {
         e.preventDefault();
         const vnpayPayment = async () => {
             const res = await axios.post(
-                `https://adventure-charity.herokuapp.com/api/user/vnpay_payment`,
+                `https://khoi-hi-vong.herokuapp.com/api/user/vnpay_payment`,
                 {
                     amount: money,
                     orderDescription: "Naptienquyengop",

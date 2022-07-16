@@ -99,6 +99,31 @@ const SidebarAdmin = () => {
                 </li>
               </ul>
             </li>
+
+            <li className="nav-item">
+              <a href="#" className="nav-link">
+                <i className="nav-icon fas fa-images"></i>
+                <p>
+                 Hoàn cảnh
+                  <i className="right fas fa-angle-left"></i>
+                </p>
+              </a>
+              <ul className="nav nav-treeview">
+                <li className="nav-item">
+                  <a href="/admin/receiver/add" className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Thêm hoàn cảnh</p>
+                  </a>
+                </li>
+                <li className="nav-item">
+                  <a href="/admin/receiver/list?page=1" className="nav-link">
+                    <i className="far fa-circle nav-icon"></i>
+                    <p>Danh sách hoàn cảnh</p>
+                  </a>
+                </li>
+              </ul>
+            </li>
+
           </ul>
         </nav>
       </div>

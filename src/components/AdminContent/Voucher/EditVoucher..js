@@ -21,7 +21,7 @@ const EditVoucher = () => {
     useEffect(() => {
         const getVoucher = async () => {
             const res = await axios.get(
-                `https://adventure-charity.herokuapp.com/api/voucher/edit/${id}`,
+                `https://khoi-hi-vong.herokuapp.com/api/voucher/edit/${id}`,
                 {
                     headers: {
                         authorization: token,
@@ -53,7 +53,7 @@ const EditVoucher = () => {
     const handleOnSubmit = async (e) => {
         e.preventDefault();
         axios.post(
-            `https://adventure-charity.herokuapp.com/api/voucher/edit/${id}`,
+            `https://khoi-hi-vong.herokuapp.com/api/voucher/edit/${id}`,
             formData,
             {
                 headers: {

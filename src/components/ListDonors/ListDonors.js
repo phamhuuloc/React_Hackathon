@@ -11,7 +11,7 @@ const ListDonors = () => {
   useEffect(() => {
     const getListDonors = async () => {
       const listDonors = await axios.get(
-        "https://adventure-charity.herokuapp.com/api/supplier/list?page=1"
+        "https://khoi-hi-vong.herokuapp.com/api/supplier/list?page=1"
       );
       setFormData(listDonors.data.suppliers);
     };

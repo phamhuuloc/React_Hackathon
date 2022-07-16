@@ -24,7 +24,7 @@ const Vouchers = () => {
         setData(category);
       } else {
         let res = await axios.get(
-          "https://adventure-charity.herokuapp.com/api/voucher/list?page=1"
+          "https://khoi-hi-vong.herokuapp.com/api/voucher/list?page=1"
         );
         setData(res.data.vouchers);
       }
@@ -38,7 +38,7 @@ const Vouchers = () => {
 
       if (token) {
         const res = await axios.post(
-          "https://adventure-charity.herokuapp.com/api/user/voucher",
+          "https://khoi-hi-vong.herokuapp.com/api/user/voucher",
           idVoucher,
           {
             headers: {

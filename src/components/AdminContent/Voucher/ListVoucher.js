@@ -20,7 +20,7 @@ const ListVoucher = () => {
     useEffect(() => {
         const getListVouchers = async () => {
             const res = await axios.get(
-                "https://adventure-charity.herokuapp.com/api/voucher/list?page=1"
+                "https://khoi-hi-vong.herokuapp.com/api/voucher/list?page=1"
             );
             setData(res.data.vouchers);
         };
@@ -34,7 +34,7 @@ const ListVoucher = () => {
         };
         const addCode = async () => {
             const res = await axios.post(
-                "https://adventure-charity.herokuapp.com/api/voucher/newcode",
+                "https://khoi-hi-vong.herokuapp.com/api/voucher/newcode",
                 formReq,
                 {
                     headers: {
@@ -48,7 +48,7 @@ const ListVoucher = () => {
     async function removeVoucher(id) {
         const deleteVoucher = async () => {
             const res = await axios.delete(
-                `https://adventure-charity.herokuapp.com/api/voucher/delete/${id}`,
+                `https://khoi-hi-vong.herokuapp.com/api/voucher/delete/${id}`,
                 {
                     headers: {
                         authorization: token,
@@ -67,7 +67,7 @@ const ListVoucher = () => {
         };
         const addCode = async () => {
             const res = await axios.post(
-                `https://adventure-charity.herokuapp.com/api/voucher/newcode/`,
+                `https://khoi-hi-vong.herokuapp.com/api/voucher/newcode/`,
                 formReq,
                 {
                     headers: {
@@ -97,7 +97,7 @@ const ListVoucher = () => {
                 </thead>
 
                 <tbody>
-                    {data.length ? (
+                    {data?.length ? (
                         data.map((voucher) => (
                             <tr>
                                 <td>{voucher.description}</td>

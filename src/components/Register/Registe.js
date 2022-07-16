@@ -32,7 +32,7 @@ const Register = () => {
         cmnd: data.idProof,
       };
       const res = await axios.post(
-        "https://adventure-charity.herokuapp.com/api/auth/register",
+        "https://khoi-hi-vong.herokuapp.com/api/auth/register",
         data_1
       );
       console.log(res);

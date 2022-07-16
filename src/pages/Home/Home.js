@@ -16,7 +16,7 @@ const Home = () => {
       <DonateSection />
       <BenefitDonate />
       <WhyTrust />
-      <TopDonate />
+      {/* <TopDonate /> */}
     </>
   );
 };

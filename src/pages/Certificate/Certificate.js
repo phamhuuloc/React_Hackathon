@@ -9,7 +9,7 @@ const Certificate = () => {
   useEffect(() => {
     const getCer = async () => {
       const res = await axios.get(
-        `https://adventure-charity.herokuapp.com/api/user/certificate/${id}`
+        `https://khoi-hi-vong.herokuapp.com/api/user/certificate/${id}`
       );
       setImg(res.data.certificate.image);
       console.log(res);

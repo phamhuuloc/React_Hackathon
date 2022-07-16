@@ -2,6 +2,8 @@ import React from "react";
 import AddVoucher from "../../components/AdminContent/Voucher/AddVoucher";
 import AddSupplier from "../../components/AdminContent/Supplier/AddSupplier";
 import ListVoucher from "../../components/AdminContent/Voucher/ListVoucher";
+import AddReceiver from "../../components/AdminContent/Receiver/AddReceiver";
+import ListReceiver from "../../components/AdminContent/Receiver/ListReceiver";
 import Navbar from "../../components/Navbar/Navbar";
 import SidebarAdmin from "../../components/SidebarAdmin/SidebarAdmin";
 import "./Admin.scss";
@@ -14,6 +16,8 @@ const Admin = ({ route }) => {
             {route === "/admin/voucher/list" && <ListVoucher />}
             {route === "/admin/supplier/add" && <AddSupplier />}
             {route === "/admin/voucher/edit" && <EditVoucher />}
+            {route === "/admin/receiver/add" && <AddReceiver />}
+            {route === "/admin/receiver/list" && <ListReceiver />}
         </>
     );
     return (

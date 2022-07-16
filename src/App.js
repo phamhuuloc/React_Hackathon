@@ -18,6 +18,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 import Certificate from "./pages/Certificate/Certificate";
+import Receiver from "./pages/Receiver/Receiver";
+
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
@@ -46,6 +48,7 @@ function App() {
         <Route path="/work" element={<HowWeWork />} />
         <Route path="/donors" element={<Donors />} />
         <Route path="/certificate/:id" element={<Certificate />} />
+        <Route path="/receiver/:id" element={<Receiver />} />
         <Route
           path="/admin/voucher/edit/:id"
           element={<Admin route="/admin/voucher/edit" />}
@@ -62,6 +65,14 @@ function App() {
         <Route
           path="/admin/voucher/list"
           element={<Admin route="/admin/voucher/list" />}
+        />
+        <Route
+          path="/admin/receiver/add"
+          element={<Admin route="/admin/receiver/add" />}
+        />
+        <Route
+          path="/admin/receiver/list"
+          element={<Admin route="/admin/receiver/list" />}
         />
         <Route
           path="/admin/supplier/add"
