@@ -3,10 +3,16 @@ import { useState } from "react";
 import Navbar from "../../components/Navbar/Navbar";
 import axios from "axios";
 import "./Donation.scss";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { isFulfilled } from "@reduxjs/toolkit";
+import ShareLink from "react-facebook-share-link";
+import { toast } from "react-toastify";
+
 const Donation = () => {
   const navigate = useNavigate();
   const [message, setMessage] = useState("");
+  const [certificate, setCertificate] = useState("");
+  const [certificateId, setCertificateId] = useState("");
   const [data, setData] = useState({
     typeDonation: "",
     cartId: "",
@@ -15,6 +21,7 @@ const Donation = () => {
     address: "",
     shareIdea: "",
   });
+
   const handleResetButton = () => {
     setData({
       typeDonation: "",
@@ -25,9 +32,11 @@ const Donation = () => {
       address: "",
     });
   };
+
   const handeSelected = (e) => {
     setData({ ...data, typeDonation: e.target.value });
   };
+
   const token = window.localStorage.getItem("token");
   const donation = async (e) => {
     try {
@@ -40,7 +49,7 @@ const Donation = () => {
       };
       if (token) {
         const res = await axios.post(
-          "http://adventure-charity.herokuapp.com/api/user/donation",
+          "https://adventure-charity.herokuapp.com/api/user/donation",
           data_1,
           {
             headers: {
@@ -48,7 +57,10 @@ const Donation = () => {
             },
           }
         );
-        alert(res.data.message);
+        setCertificateId(res.data.certificateId);
+        setCertificate(res.data.certificate);
+
+        toast.success(res.data.message);
       }
       setData({
         typeDonation: "",
@@ -59,7 +71,7 @@ const Donation = () => {
         shareIdea: "",
       });
     } catch (err) {
-      alert(err.response.data.message);
+      toast.error(err.response.data.message);
       console.log(err);
     }
   };
@@ -73,7 +85,24 @@ const Donation = () => {
           <div className="donation-form">
             <div className="donation-form-heading">
               <h1 className="donation-form-title">Quyên góp</h1>
-              <button className="donation-form-submit">Tham gia tài trợ</button>
+              <div className="donation-form-wrapper">
+                <button className="donation-form-submit">
+                  <Link to="/donors">Tham gia tài trợ</Link>
+                </button>
+                {certificate ? (
+                  <button className="donation-form-submit-share">
+                    <ShareLink link={`${certificate}`}>
+                      {(link) => (
+                        <a href={link} target="_blank" rel="noreferrer">
+                          Chia sẻ
+                        </a>
+                      )}
+                    </ShareLink>
+                  </button>
+                ) : (
+                  <div></div>
+                )}
+              </div>
             </div>
             <div className="donation-form-row">
               <div className="donation-form-group">
@@ -107,6 +136,7 @@ const Donation = () => {
                       name="cartId"
                       id="cartId"
                       className="cartId"
+                      min="0"
                       value={data.cartId}
                       onChange={(e) =>
                         setData({ ...data, cartId: e.target.value })
@@ -186,19 +216,26 @@ const Donation = () => {
               </div>
             </div>
             <div className="donation-form-button">
-              <button
-                className="donation-form-submit"
-                onClick={() => donation()}
-              >
-                SUBMIT
+              <button className="donation-form-submit">
+                <Link
+                  to={token === "" || token === null ? "/login" : " "}
+                  onClick={() => donation()}
+                >
+                  Gửi
+                </Link>
               </button>
               <button
                 className="donation-form-reset"
                 onClick={(e) => handleResetButton(e)}
               >
-                RESET
+                Làm Mới
               </button>
             </div>
+            {certificate ? (
+              <img src={`${certificate}`} width="885px" height="626px"></img>
+            ) : (
+              <div></div>
+            )}
           </div>
         </div>
       </div>

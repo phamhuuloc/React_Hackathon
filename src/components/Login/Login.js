@@ -2,8 +2,10 @@ import axios from "axios";
 import { useId, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
-import axiosClient from "../../apis/items/axiosClient";
 import "./Login.scss";
+
+import { toast } from "react-toastify";
+
 const Login = () => {
   const [data, setData] = useState({ email: "", password: "" });
   const navigate = useNavigate();
@@ -12,18 +14,20 @@ const Login = () => {
     try {
       e.preventDefault();
       const res = await axios.post(
-        "http://adventure-charity.herokuapp.com/api/auth/login",
+        "https://adventure-charity.herokuapp.com/api/auth/login",
         data
       );
-      console.log(res);
-      // dispatch(setUser(res));
+      if (res.data.role === "admin") navigate("/admin/voucher/add");
+      else navigate("/");
       window.localStorage.setItem("token", res.data.token);
-      navigate("/");
+      toast.success("Đăng nhập thành công");
     } catch (err) {
       console.log(err);
+      toast.error(err.response.data.message);
     }
     setData({ email: "", password: "" });
   };
+
   return (
     <div className="login">
       <div className="login-container">
@@ -53,7 +57,7 @@ const Login = () => {
           <p>Quên mật khẩu</p>
           <input
             type="button"
-            value="Đăng nhập để quên góp"
+            value="Đăng Nhập"
             className="login-form-button"
             onClick={(e) => login(e)}
           />

@@ -1,0 +1,20 @@
+@import "../../Responsive.scss";
+.history-donation {
+  &-header {
+  }
+  &-title {
+    margin: 30px 20px;
+    font-size: 30px;
+    @include mobile {
+      font-size: 20px;
+    }
+  }
+}
+
+th {
+  text-align: center;
+  color: tomato;
+}
+td {
+  text-align: center;
+}

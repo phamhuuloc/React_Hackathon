@@ -1,0 +1,32 @@
+.recharge {
+    &-form-group {
+        margin: 0;
+    }
+    &-modal {
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
+    &-payImg {
+        width: 250px;
+        height: 50px;
+        display: inline-block;
+        margin-left: 20px;
+
+        img {
+            height: 100%;
+        }
+    }
+
+    &-rule {
+        &-text {
+            display: inline-block;
+        }
+
+        &-icon {
+            display: block;
+            width: 20px;
+        }
+    }
+}

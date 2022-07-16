@@ -1,17 +1,27 @@
 import React from "react";
 import "./HeroSection.scss";
+import HeroImage from "../../img/landing-page.png";
+import { Link } from "react-router-dom";
 const HeroSection = () => {
   return (
     <div className="hero-section">
       <div className="hero-section-container">
-        <h1>Hãy lan tỏa yêu thương</h1>
-        <h3>Chúng tôi sẽ chỉ dãn cho bạn quyên góp đúng nơi</h3>
-        <button className="hero-section-button">Giới Thiệu</button>
+        <div className="hero-section-container-describe">
+          <h1>Khối Hy Vọng</h1>
+          <h6>Tôi hạnh phúc khi mọi người hạnh phúc</h6>
+          <div className="hero-section-container-content">
+            <p>Mỗi </p>
+          </div>
+          <button className="hero-section-button">
+            <Link to="/story">Giới thiệu</Link>
+          </button>
+        </div>
+        <div className="hero-section-container-img">
+         <img src={HeroImage} alt="" />
+        </div>
+
       </div>
-      <img
-        src="https://scontent.fsgn5-5.fna.fbcdn.net/v/t1.15752-9/259605682_722646022453285_3889372583315628271_n.jpg?stp=dst-jpg_s2048x2048&_nc_cat=100&ccb=1-6&_nc_sid=ae9488&_nc_ohc=6LafdV9fbnYAX8HUZSm&_nc_ht=scontent.fsgn5-5.fna&oh=03_AVJYawBEKC4C05cm0stIM7KRczyE4uyZ9c0pG-3jMcr3Yw&oe=6299AEB3"
-        alt=""
-      />
+
     </div>
   );
 };

@@ -1,0 +1,22 @@
+.payment {
+    &-modal {
+        display: flex;
+        left: 50%;
+        top: 50%;
+        position: absolute;
+        transform: translate(-50%, -50%);
+    }
+}
+.form-group {
+    margin: 0 40px;
+    a {
+        color: white;
+    }
+    // a:hover {
+    //     color: white;
+    // }
+}
+.text-success {
+    margin-top: 40px;
+    text-align: center;
+}

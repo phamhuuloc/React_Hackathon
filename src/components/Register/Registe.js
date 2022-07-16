@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axiosClient from "../../apis/items/axiosClient";
 import axios from "axios";
 import "./Register.scss";
-
+import { toast } from "react-toastify";
 const Register = () => {
   const navigate = useNavigate();
   const [formErrors, setFormErrors] = useState({});
@@ -32,14 +32,15 @@ const Register = () => {
         cmnd: data.idProof,
       };
       const res = await axios.post(
-        "http://adventure-charity.herokuapp.com/api/auth/register",
+        "https://adventure-charity.herokuapp.com/api/auth/register",
         data_1
       );
       console.log(res);
-      alert("dang ky thanh cong");
+      toast.success("dang ky thanh cong");
       navigate("/login");
     } catch (err) {
       console.log(err);
+      toast.error(err.response.data.message);
     }
   };
 
@@ -127,7 +128,7 @@ const Register = () => {
               className="signup-form-submit"
               onClick={() => handleButtonLogin()}
             >
-              Login
+              Đăng Nhập
             </button>
           </div>
           <div className="signup-form-row">
@@ -240,13 +241,13 @@ const Register = () => {
               className="signup-form-submit"
               onClick={(e) => resgister(e)}
             >
-              SUBMIT
+              Xác Nhận
             </button>
             <button
               className="signup-form-reset"
               onClick={() => handleResetButton()}
             >
-              RESET
+              Làm Mới
             </button>
           </div>
         </div>
