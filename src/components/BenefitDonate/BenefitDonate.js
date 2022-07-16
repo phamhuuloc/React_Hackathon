@@ -11,7 +11,7 @@ const BenefitDonate = () => {
   return (
     <div className="benefit-donate">
       <h1 className="benefit-donate-title">
-        Tại sao các nhà tài trợ nên tham gia tài trợ
+        TẠI SAO BẠN NÊN TIN TƯỞNG CHÚNG TÔI?
       </h1>
       <div className="benefit-donate-row">
         <div className="benefit-donate-block">
