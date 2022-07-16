@@ -7,16 +7,18 @@
 
 
   &-container {
+    margin: 100px 0;
     position: absolute;
     top: 50%;
     left: 50%;
     width: 90%;
+
     transform: translate(-50%, -50%);
     text-align: center;
     display: flex;
     z-index: 50;
 
-    border-bottom: 1px solid rgba(0,0,0,0.5);
+
 
     &-describe{
       width:50%;
@@ -27,16 +29,17 @@
     }
 
     h1 {
-      font-size: 72px;
-      padding: 10% 5% 0 0;
+      font-size: 76px;
+
       line-height: 60px;
       font-weight: 700;
       color: #01BFDE;
       text-shadow: rgb(0 0 0 / 75%) 1px 1px 2px;
       text-transform: capitalize;
+      margin: 25% 0 0 0  ;
     }
     h3 {
-      font-size: 24px;
+      font-size: 32px;
       padding: 0 5%;
       line-height: 34px;
       margin-top: 40px;
@@ -46,15 +49,20 @@
     }
 
     h6{
-      font-size: 16px;
+
+      font-size: 20px;
       padding: 40px 0 0 0;
       font-style: italic;
+      color: gray;
 
     }
     button {
       a {
         color: white;
       }
+      top:50%;
+      left:50%;
+
       background: #01BFDE;
       color: #fff;
       margin-top: 40px;
@@ -65,9 +73,10 @@
       font-size: 14px;
       padding: 10px;
       border: none;
+      border-radius: 10px;
       cursor: pointer;
       text-transform: uppercase;
-      border-radius: 3px;
+
       &:hover {
         background-color: #0094AB;
       }

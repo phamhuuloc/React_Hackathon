@@ -9,7 +9,7 @@ const Donors = () => {
       <Navbar />
       <div className="donors">
         <div className="donors-content">
-          <h1>Nhà tài trợ</h1>
+          <h1>Nhà Tài Trợ</h1>
           <p>
             Nhà tài trợ đóng một vai trò cực kỳ quan trọng không thể thiếu trong
             ý tưởng từ thiện táo bạo của chúng tôi, nhà tài trợ có thể trợ giúp
@@ -23,7 +23,7 @@ const Donors = () => {
 
           <ListDonors />
           <div>
-            <h2>Cam On Vi Da Den</h2>
+            <h2>Khối Hy Vọng</h2>
             {/* <h3>Thành viên nhóm</h3> */}
             <h3>
               Để tham gia tài trợ bạn có thể liên lạc với những thành viên sau{" "}
